@@ -1,15 +1,21 @@
 import type { Locale } from "./config";
 
+const MAP_URL =
+  "https://www.google.com/maps/search/?api=1&query=Hotel+Gottwald+2890+Tata+Fekete+u.+1";
+const HOTEL_SITE = "https://gottwald.hu/hu/";
+const HOTEL_BOOK = "https://gottwald.hu/online-foglalas/";
+const HOTEL_WEDDING = "https://gottwald.hu/wedding/";
+
 const hu = {
   meta: {
-    title: "Anna & Márton — Esküvő",
+    title: "Berni & Patrik — Esküvő",
     description:
-      "Hivatalos esküvői oldal: program, helyszínek, szállás és visszajelzés.",
+      "Berni és Patrik esküvője — 2027. május 29., Hotel Gottwald, Tata.",
   },
   brand: {
-    names: "Anna & Márton",
-    date: "2027. június 12.",
-    tagline: "Együtt ünneplünk — veletek.",
+    names: "Berni & Patrik",
+    date: "2027. május 29.",
+    tagline: "Egy nap, egy hely — veletek együtt.",
   },
   nav: {
     schedule: "Program",
@@ -26,99 +32,156 @@ const hu = {
   },
   schedule: {
     title: "A nap menete",
-    lead: "Időpontok helyőrzők — később pontosítjuk.",
+    lead: "A pontos időpontokat hamarosan frissítjük.",
     items: [
       {
-        time: "15:00",
+        time: "—",
         title: "Vendégfogadás",
-        detail: "Kertben, frissítőkkel.",
+        detail: "Italok és aprósütemény a szertartás előtt.",
       },
       {
-        time: "16:00",
+        time: "—",
         title: "Szertartás",
-        detail: "Helyszín neve — hamarosan.",
+        detail: "A hotel parkjában, az öreg tölgyfa alatt.",
       },
       {
-        time: "17:30",
-        title: "Fotózás & koccintás",
-        detail: "Rövid szünet a kertben.",
+        time: "—",
+        title: "Koccintás & fotók",
+        detail: "Pezsgős koccintás a szertartás után.",
       },
       {
-        time: "19:00",
-        title: "Vacsora",
-        detail: "Ültetett vacsora, majd tánc.",
+        time: "—",
+        title: "Vacsora & tánc",
+        detail: "Ünneplés a bálteremben, teraszhasználattal.",
       },
     ],
   },
   venues: {
     title: "Helyszínek",
-    lead: "Térképek és címek helyőrzők — cseréld ki a linkeket.",
+    lead: "Minden egy helyen: Hotel Gottwald, Tata — az Öreg-tó közelében.",
+    hotelNote: "4★ superior szálloda · 2890 Tata, Fekete u. 1.",
+    hotelLinkLabel: "Hotel weboldala & fotók",
+    hotelUrl: HOTEL_SITE,
     ceremony: {
       label: "Szertartás",
-      name: "Szertartás helyszíne",
-      address: "Utcanev 1., Város — cím hamarosan",
+      name: "Az öreg tölgyfa alatt",
+      address:
+        "Hotel Gottwald parkja — több évtizedes tölgyfa, természetközeli szertartás a kertben.",
       mapLabel: "Térkép megnyitása",
-      mapUrl: "https://maps.google.com",
+      mapUrl: MAP_URL,
+      detailLabel: "Helyszín részletei",
+      detailUrl: HOTEL_WEDDING,
     },
     reception: {
-      label: "Fogadás",
-      name: "Fogadás helyszíne",
-      address: "Utcanev 2., Város — cím hamarosan",
+      label: "Vacsora",
+      name: "Bálterem",
+      address:
+        "Hotel Gottwald különterem, teraszhasználattal — 2890 Tata, Fekete u. 1.",
       mapLabel: "Térkép megnyitása",
-      mapUrl: "https://maps.google.com",
+      mapUrl: MAP_URL,
+      detailLabel: "Hotel Gottwald",
+      detailUrl: HOTEL_SITE,
     },
   },
   travel: {
     title: "Utazás & szállás",
-    lead: "Hogyan érkezz, hol aludj — részletek helyőrzők.",
+    lead: "Parkolás a hotelben, szállás a Gottwaldnál, helyi taxi a Tata környékén alvóknak.",
     items: [
       {
-        title: "Autóval",
-        body: "Parkolás a helyszín mellett. Navigációs pin később.",
+        title: "Parkolás",
+        body: "Parkolás a Hotel Gottwald területén megoldható.",
       },
       {
-        title: "Tömegközlekedés",
-        body: "Átszállási tippek és megálló neve — hamarosan.",
+        title: "Taxi Tatán",
+        body: "Ha nem a hotelben alszol, de Tata környékén szállsz meg, helyi taxival segítünk az odavissza úton — részletek később / írj nekünk.",
       },
       {
-        title: "Szállás",
-        body: "Ajánlott szállodák listája — hamarosan frissül.",
+        title: "Megközelítés",
+        body: "Tata történelmi belvárosa, az Öreg-tó partján. GPS: 47.639935, 18.312428.",
       },
     ],
+    stay: {
+      title: "Szállás — Hotel Gottwald",
+      lead: "Ajánlott szobaárak az esküvői ajánlat alapján (változhatnak; foglaláskor egyeztessetek velünk vagy a hotellel).",
+      includes:
+        "Az ár tartalmazza: szállás, gazdag büféreggeli, wellness használat 10:00-ig.",
+      taxNote:
+        "Idegenforgalmi adó (18–70 év): 830 Ft/fő/éj — a szobaár nem tartalmazza.",
+      bookLabel: "Online foglalás a hotelnél",
+      bookUrl: HOTEL_BOOK,
+      rooms: [
+        {
+          name: "Kétágyas szoba",
+          price: "38.000 Ft / szoba / éj",
+        },
+        {
+          name: "Háromágyas szoba / apartman",
+          price: "48.000 Ft / szoba / éj",
+        },
+        {
+          name: "Négyágyas apartman",
+          price: "68.000 Ft / szoba / éj",
+        },
+        {
+          name: "Extra fő (4. fő felett, apartman)",
+          price: "12.000 Ft / fő / éj",
+        },
+      ],
+    },
   },
   dress: {
     title: "Dress code",
-    lead: "Kerti ünneplés, elegáns, de kényelmes.",
-    body: "Kérjük a sötétzöld és a fehér elkerülését a szertartáson. Magassarkú helyett ajánlott a kényelmes cipő a füvön.",
+    lead: "Elegáns.",
+    body: "Kérjük, kerüld a pirosat és a fehéret. A szertartás a kertben, a tölgyfa alatt lesz — érdemes kényelmes cipőt választani a füves talajra.",
   },
   faq: {
     title: "Gyakori kérdések",
-    lead: "Rövid válaszok — bővíthető lista.",
+    lead: "A legfontosabb tudnivalók egy helyen.",
     items: [
       {
+        q: "Hol lesz az esküvő?",
+        a: "A tatai Hotel Gottwaldban (Fekete u. 1.). A szertartás a park öreg tölgyfája alatt, a vacsora a bálteremben.",
+      },
+      {
         q: "Mikor kell visszajelezni?",
-        a: "Kérjük, a meghívón szereplő határidőig töltsd ki a visszajelző űrlapot.",
+        a: "Kérjük, töltsd ki a visszajelző űrlapot, amint tudod a válaszodat — a pontos határidőt a meghívón is jelezzük.",
       },
       {
         q: "Vihetek +1-et?",
-        a: "Ha a meghívód ezt lehetővé teszi, jelöld az űrlapon. Egyébként írj nekünk.",
+        a: "Ha a meghívód ezt lehetővé teszi, jelöld az űrlapon. Bizonytalan esetben írj nekünk.",
       },
       {
-        q: "Lesz parkolás?",
-        a: "Igen — a pontos helyszínnél jelezzük a részleteket.",
+        q: "Hol tudok parkolni?",
+        a: "Parkolás a Hotel Gottwald területén megoldható.",
       },
       {
-        q: "Gyerekek jöhetnek?",
-        a: "A meghívó szerint. Ha kérdésed van, írj a kapcsolati címre.",
+        q: "Hol ajánlott megszállni?",
+        a: "A Hotel Gottwaldnál — szobatípusok és árak az Utazás & szállás szekcióban. A hotel wellnessét és büféreggelijét is tartalmazza az ár.",
+      },
+      {
+        q: "Ha nem a hotelben alszom?",
+        a: "Ha Tata környékén szállsz meg, helyi taxival segítünk az odavissza úton. Írj nekünk, és egyeztetünk.",
+      },
+      {
+        q: "Mi a dress code?",
+        a: "Elegáns. Kerüld a pirosat és a fehéret. Kerti szertartás miatt praktikus a kényelmes cipő.",
+      },
+      {
+        q: "Ételallergia / speciális étrend?",
+        a: "Jelöld a visszajelző űrlapon — a menü egyéni igényekhez igazítható.",
+      },
+      {
+        q: "Kültéri szertartás — mi van, ha esik?",
+        a: "A tölgyfa alatti szertartás a kertben zajlik; rossz idő esetén a hotellel egyeztetett beltéri megoldást követjük. Frissítjük, ha végleges.",
       },
     ],
   },
   contact: {
     title: "Kapcsolat",
-    lead: "Írj nyugodtan, ha bármi kérdésed van.",
+    lead: "Írj nyugodtan bármelyik címre.",
     emailLabel: "E-mail",
-    email: "hello@pelda.hu",
-    note: "Cseréld ki a címet a sajátotokra.",
+    emails: ["patrik.hidvegi94@gmail.com", "bernadett9601@gmail.com"],
+    note: "Berni vagy Patrik válaszol.",
   },
   rsvp: {
     title: "Visszajelzés",
@@ -138,8 +201,7 @@ const hu = {
     submit: "Küldés",
     submitting: "Küldés…",
     success: "Köszönjük! Megkaptuk a visszajelzésedet.",
-    error:
-      "Nem sikerült elküldeni. Próbáld újra, vagy írj e-mailben.",
+    error: "Nem sikerült elküldeni. Próbáld újra, vagy írj e-mailben.",
     unconfigured:
       "Az űrlap még nincs bekötve. Állítsd be a FORMSPREE_FORM_ID vagy a Supabase környezeti változókat (lásd README).",
   },
@@ -152,14 +214,14 @@ export type Dictionary = typeof hu;
 
 const en: Dictionary = {
   meta: {
-    title: "Anna & Márton — Wedding",
+    title: "Berni & Patrik — Wedding",
     description:
-      "Official wedding site: schedule, venues, travel, and RSVP.",
+      "Berni and Patrik’s wedding — 29 May 2027, Hotel Gottwald, Tata.",
   },
   brand: {
-    names: "Anna & Márton",
-    date: "12 June 2027",
-    tagline: "Celebrating together — with you.",
+    names: "Berni & Patrik",
+    date: "29 May 2027",
+    tagline: "One day, one place — with you.",
   },
   nav: {
     schedule: "Schedule",
@@ -176,99 +238,156 @@ const en: Dictionary = {
   },
   schedule: {
     title: "The day",
-    lead: "Placeholder times — we’ll refine them soon.",
+    lead: "Exact times will be updated soon.",
     items: [
       {
-        time: "3:00 PM",
-        title: "Guest arrival",
-        detail: "Garden welcome with drinks.",
+        time: "—",
+        title: "Guest welcome",
+        detail: "Drinks and bites before the ceremony.",
       },
       {
-        time: "4:00 PM",
+        time: "—",
         title: "Ceremony",
-        detail: "Venue name — coming soon.",
+        detail: "Under the old oak in the hotel park.",
       },
       {
-        time: "5:30 PM",
-        title: "Photos & toast",
-        detail: "A short pause in the garden.",
+        time: "—",
+        title: "Toast & photos",
+        detail: "A sparkling toast after the ceremony.",
       },
       {
-        time: "7:00 PM",
-        title: "Dinner",
-        detail: "Seated dinner, then dancing.",
+        time: "—",
+        title: "Dinner & dancing",
+        detail: "Celebration in the ballroom, with terrace access.",
       },
     ],
   },
   venues: {
     title: "Venues",
-    lead: "Map and address placeholders — swap in your links.",
+    lead: "Everything in one place: Hotel Gottwald, Tata — near Lake Öreg.",
+    hotelNote: "4★ superior hotel · 2890 Tata, Fekete u. 1.",
+    hotelLinkLabel: "Hotel website & photos",
+    hotelUrl: HOTEL_SITE,
     ceremony: {
       label: "Ceremony",
-      name: "Ceremony venue",
-      address: "Street 1, City — address soon",
+      name: "Under the old oak",
+      address:
+        "Hotel Gottwald park — a decades-old oak for a nature-close ceremony.",
       mapLabel: "Open map",
-      mapUrl: "https://maps.google.com",
+      mapUrl: MAP_URL,
+      detailLabel: "Venue details",
+      detailUrl: HOTEL_WEDDING,
     },
     reception: {
-      label: "Reception",
-      name: "Reception venue",
-      address: "Street 2, City — address soon",
+      label: "Dinner",
+      name: "Ballroom",
+      address:
+        "Hotel Gottwald private hall with terrace — 2890 Tata, Fekete u. 1.",
       mapLabel: "Open map",
-      mapUrl: "https://maps.google.com",
+      mapUrl: MAP_URL,
+      detailLabel: "Hotel Gottwald",
+      detailUrl: HOTEL_SITE,
     },
   },
   travel: {
     title: "Travel & stay",
-    lead: "How to arrive and where to sleep — placeholder notes.",
+    lead: "Park at the hotel, stay at Gottwald, local taxi if you’re nearby in Tata.",
     items: [
       {
-        title: "By car",
-        body: "Parking near the venue. Nav pin coming soon.",
+        title: "Parking",
+        body: "Parking is available on the Hotel Gottwald grounds.",
       },
       {
-        title: "Public transit",
-        body: "Transfer tips and stop name — soon.",
+        title: "Taxi in Tata",
+        body: "If you’re staying around Tata (not at the hotel), a local taxi can help with the trip — details later, or message us.",
       },
       {
-        title: "Stay",
-        body: "Suggested hotels list — updating soon.",
+        title: "Getting there",
+        body: "Historic centre of Tata, by Lake Öreg. GPS: 47.639935, 18.312428.",
       },
     ],
+    stay: {
+      title: "Stay — Hotel Gottwald",
+      lead: "Suggested room rates from the wedding offer (subject to change; confirm with us or the hotel when booking).",
+      includes:
+        "Rate includes: room, rich buffet breakfast, wellness access until 10:00.",
+      taxNote:
+        "Tourist tax (ages 18–70): 830 Ft / person / night — not included in the room rate.",
+      bookLabel: "Book online at the hotel",
+      bookUrl: HOTEL_BOOK,
+      rooms: [
+        {
+          name: "Double room",
+          price: "38,000 Ft / room / night",
+        },
+        {
+          name: "Triple room / apartment",
+          price: "48,000 Ft / room / night",
+        },
+        {
+          name: "4-person apartment",
+          price: "68,000 Ft / room / night",
+        },
+        {
+          name: "Extra guest (beyond 4, apartment)",
+          price: "12,000 Ft / person / night",
+        },
+      ],
+    },
   },
   dress: {
     title: "Dress code",
-    lead: "Garden celebration — elegant, but comfortable.",
-    body: "Please avoid deep green and white at the ceremony. Comfortable shoes work better than heels on grass.",
+    lead: "Elegant.",
+    body: "Please avoid red and white. The ceremony is outdoors under the oak — comfortable shoes work better on grass.",
   },
   faq: {
     title: "FAQ",
-    lead: "Short answers — easy to extend.",
+    lead: "The essentials in one place.",
     items: [
       {
+        q: "Where is the wedding?",
+        a: "At Hotel Gottwald in Tata (Fekete u. 1.). Ceremony under the park’s old oak; dinner in the ballroom.",
+      },
+      {
         q: "When should I RSVP?",
-        a: "Please complete the form by the date on your invitation.",
+        a: "Please complete the form as soon as you know — we’ll also note the deadline on the invitation.",
       },
       {
         q: "Can I bring a +1?",
-        a: "If your invitation allows it, mark it on the form. Otherwise message us.",
+        a: "If your invitation allows it, mark it on the form. Unsure? Message us.",
       },
       {
-        q: "Is there parking?",
-        a: "Yes — we’ll share details with the final venue info.",
+        q: "Where can I park?",
+        a: "Parking is available on the Hotel Gottwald grounds.",
       },
       {
-        q: "Are children welcome?",
-        a: "As noted on the invitation. Questions? Write to the contact email.",
+        q: "Where should I stay?",
+        a: "At Hotel Gottwald — room types and rates are in Travel & stay. Rates include breakfast and wellness access.",
+      },
+      {
+        q: "What if I’m not staying at the hotel?",
+        a: "If you’re staying around Tata, a local taxi can help with the trip. Message us and we’ll coordinate.",
+      },
+      {
+        q: "What’s the dress code?",
+        a: "Elegant. Please avoid red and white. Comfortable shoes help for the garden ceremony.",
+      },
+      {
+        q: "Food allergies / special diet?",
+        a: "Note it on the RSVP form — the menu can be adjusted for individual needs.",
+      },
+      {
+        q: "Outdoor ceremony — what if it rains?",
+        a: "The oak ceremony is in the garden; in bad weather we’ll follow an indoor plan with the hotel. We’ll update when final.",
       },
     ],
   },
   contact: {
     title: "Contact",
-    lead: "Reach out anytime with questions.",
+    lead: "Write to either address anytime.",
     emailLabel: "Email",
-    email: "hello@example.com",
-    note: "Replace with your real address.",
+    emails: ["patrik.hidvegi94@gmail.com", "bernadett9601@gmail.com"],
+    note: "Berni or Patrik will reply.",
   },
   rsvp: {
     title: "RSVP",

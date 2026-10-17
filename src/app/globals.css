@@ -1,17 +1,16 @@
 @import "tailwindcss";
 
 :root {
-  --ink: #14241c;
-  --ink-soft: #24352c;
-  --fog: #e6ebe4;
-  --fog-deep: #d3dcd4;
-  --mist: #f3f6f2;
-  --brass: #c4a574;
-  --brass-deep: #a8844f;
-  --leaf: #5c7a62;
-  --leaf-bright: #7a9a7e;
-  --line: color-mix(in srgb, var(--ink) 12%, transparent);
-  --glow: color-mix(in srgb, var(--brass) 28%, transparent);
+  --ink: #0a0a0a;
+  --ink-soft: #3a3a3a;
+  --fog: #f4f4f4;
+  --fog-deep: #e8e8e8;
+  --mist: #ffffff;
+  --accent: #0a0a0a;
+  --accent-inverse: #ffffff;
+  --muted: #6b6b6b;
+  --line: color-mix(in srgb, var(--ink) 14%, transparent);
+  --glow: color-mix(in srgb, var(--ink) 12%, transparent);
   --background: var(--mist);
   --foreground: var(--ink);
 }
@@ -24,10 +23,8 @@
   --color-fog: var(--fog);
   --color-fog-deep: var(--fog-deep);
   --color-mist: var(--mist);
-  --color-brass: var(--brass);
-  --color-brass-deep: var(--brass-deep);
-  --color-leaf: var(--leaf);
-  --color-leaf-bright: var(--leaf-bright);
+  --color-accent: var(--accent);
+  --color-muted: var(--muted);
   --font-sans: var(--font-figtree);
   --font-display: var(--font-fraunces);
 }
@@ -60,16 +57,16 @@ body {
   font-family: var(--font-fraunces), Georgia, serif;
 }
 
-/* Full-bleed garden dusk hero plane */
+/* Full-bleed black hero — simple, elegant */
 .hero-plane {
   background:
-    radial-gradient(ellipse 90% 70% at 70% 20%, rgba(196, 165, 116, 0.22), transparent 55%),
-    radial-gradient(ellipse 60% 50% at 15% 80%, rgba(92, 122, 98, 0.45), transparent 50%),
-    linear-gradient(165deg, #0c1812 0%, #1a2e22 42%, #24352c 72%, #1e3328 100%);
+    radial-gradient(ellipse 80% 60% at 85% 15%, rgba(255, 255, 255, 0.08), transparent 50%),
+    radial-gradient(ellipse 50% 40% at 10% 90%, rgba(255, 255, 255, 0.05), transparent 45%),
+    linear-gradient(165deg, #000000 0%, #111111 45%, #0a0a0a 100%);
 }
 
 .hero-drift {
-  animation: hero-drift 28s ease-in-out infinite alternate;
+  animation: hero-drift 32s ease-in-out infinite alternate;
 }
 
 .hero-fade-up {
@@ -82,10 +79,6 @@ body {
 
 .hero-fade-up-later {
   animation: fade-up 1.25s cubic-bezier(0.22, 1, 0.36, 1) 0.36s both;
-}
-
-.section-reveal {
-  animation: fade-up 0.9s cubic-bezier(0.22, 1, 0.36, 1) both;
 }
 
 @keyframes fade-up {
@@ -104,27 +97,27 @@ body {
     transform: scale(1) translate(0, 0);
   }
   to {
-    transform: scale(1.06) translate(-1.5%, 1%);
+    transform: scale(1.04) translate(-1%, 0.5%);
   }
 }
 
 @keyframes soft-pulse {
   0%,
   100% {
-    opacity: 0.35;
+    opacity: 0.2;
   }
   50% {
-    opacity: 0.7;
+    opacity: 0.45;
   }
 }
 
 .leaf-glow {
-  animation: soft-pulse 6s ease-in-out infinite;
+  animation: soft-pulse 7s ease-in-out infinite;
 }
 
 .nav-blur {
   backdrop-filter: blur(14px);
-  background: color-mix(in srgb, var(--mist) 78%, transparent);
+  background: color-mix(in srgb, white 86%, transparent);
   border-bottom: 1px solid var(--line);
 }
 
@@ -133,22 +126,22 @@ body {
 }
 
 .section-kicker {
-  letter-spacing: 0.18em;
+  letter-spacing: 0.2em;
   text-transform: uppercase;
-  font-size: 0.72rem;
-  color: var(--leaf);
+  font-size: 0.7rem;
+  color: var(--muted);
   font-weight: 600;
 }
 
 .timeline-rail {
-  border-left: 1px solid color-mix(in srgb, var(--brass) 55%, transparent);
+  border-left: 1px solid var(--line);
 }
 
 .input-field {
   width: 100%;
   border: 1px solid var(--line);
-  background: color-mix(in srgb, white 70%, var(--fog));
-  border-radius: 0.35rem;
+  background: white;
+  border-radius: 0.2rem;
   padding: 0.75rem 0.9rem;
   color: var(--ink);
   transition: border-color 0.2s ease, box-shadow 0.2s ease;
@@ -156,7 +149,7 @@ body {
 
 .input-field:focus {
   outline: none;
-  border-color: var(--brass);
+  border-color: var(--ink);
   box-shadow: 0 0 0 3px var(--glow);
 }
 
@@ -165,17 +158,16 @@ body {
   align-items: center;
   justify-content: center;
   gap: 0.5rem;
-  background: var(--brass);
-  color: var(--ink);
+  background: var(--ink);
+  color: white;
   font-weight: 600;
   padding: 0.85rem 1.4rem;
-  border-radius: 0.35rem;
-  transition: background 0.2s ease, transform 0.2s ease;
+  border-radius: 0.2rem;
+  transition: background 0.2s ease, color 0.2s ease, transform 0.2s ease;
 }
 
 .btn-primary:hover {
-  background: var(--brass-deep);
-  color: white;
+  background: #2a2a2a;
 }
 
 .btn-primary:active {
@@ -185,8 +177,8 @@ body {
 .btn-ghost {
   display: inline-flex;
   align-items: center;
-  color: color-mix(in srgb, white 88%, transparent);
-  border-bottom: 1px solid color-mix(in srgb, var(--brass) 70%, transparent);
+  color: rgba(255, 255, 255, 0.85);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.45);
   padding-bottom: 0.15rem;
   transition: color 0.2s ease, border-color 0.2s ease;
 }
@@ -194,4 +186,9 @@ body {
 .btn-ghost:hover {
   color: white;
   border-color: white;
+}
+
+.map-plane {
+  background:
+    linear-gradient(145deg, #111 0%, #2a2a2a 55%, #111 100%);
 }

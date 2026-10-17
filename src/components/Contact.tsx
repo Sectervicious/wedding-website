@@ -11,16 +11,22 @@ export function Contact({ dict }: Props) {
           {dict.contact.title}
         </h2>
         <p className="mt-3 max-w-xl text-ink-soft">{dict.contact.lead}</p>
-        <p className="mt-8 text-sm uppercase tracking-[0.16em] text-leaf">
+        <p className="mt-8 text-sm uppercase tracking-[0.16em] text-muted">
           {dict.contact.emailLabel}
         </p>
-        <a
-          href={`mailto:${dict.contact.email}`}
-          className="font-display mt-2 inline-block text-3xl text-ink transition-colors hover:text-brass-deep sm:text-4xl"
-        >
-          {dict.contact.email}
-        </a>
-        <p className="mt-3 text-sm text-ink-soft/80">{dict.contact.note}</p>
+        <ul className="mt-3 space-y-2">
+          {dict.contact.emails.map((email) => (
+            <li key={email}>
+              <a
+                href={`mailto:${email}`}
+                className="font-display text-2xl text-ink transition-opacity hover:opacity-60 sm:text-3xl"
+              >
+                {email}
+              </a>
+            </li>
+          ))}
+        </ul>
+        <p className="mt-4 text-sm text-muted">{dict.contact.note}</p>
       </div>
     </section>
   );

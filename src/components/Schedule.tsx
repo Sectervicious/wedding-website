@@ -14,12 +14,12 @@ export function Schedule({ dict }: Props) {
 
         <ol className="timeline-rail mt-12 space-y-10 pl-6 sm:pl-8">
           {dict.schedule.items.map((item) => (
-            <li key={item.time} className="relative">
+            <li key={item.title} className="relative">
               <span
-                className="absolute -left-[1.55rem] top-1.5 h-2.5 w-2.5 rounded-full bg-brass sm:-left-[2.05rem]"
+                className="absolute -left-[1.55rem] top-1.5 h-2.5 w-2.5 rounded-full bg-ink sm:-left-[2.05rem]"
                 aria-hidden
               />
-              <p className="font-display text-sm tracking-wide text-brass-deep">
+              <p className="font-display text-sm tracking-wide text-muted">
                 {item.time}
               </p>
               <h3 className="mt-1 text-xl font-semibold text-ink">{item.title}</h3>

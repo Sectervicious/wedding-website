@@ -197,17 +197,17 @@ export function RsvpForm({ locale, dict }: Props) {
           </button>
 
           {status === "success" && (
-            <p className="text-sm font-medium text-leaf" role="status">
+            <p className="text-sm font-medium text-ink" role="status">
               {dict.rsvp.success}
             </p>
           )}
           {status === "error" && (
-            <p className="text-sm font-medium text-red-800" role="alert">
+            <p className="text-sm font-medium text-ink-soft" role="alert">
               {dict.rsvp.error}
             </p>
           )}
           {status === "unconfigured" && (
-            <p className="text-sm font-medium text-brass-deep" role="status">
+            <p className="text-sm font-medium text-muted" role="status">
               {dict.rsvp.unconfigured}
             </p>
           )}

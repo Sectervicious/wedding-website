@@ -47,7 +47,7 @@ export function SiteHeader({ locale, dict }: Props) {
         <div className="flex items-center gap-3">
           <Link
             href={`/${other}`}
-            className="rounded-sm border border-[var(--line)] px-3 py-1 text-xs font-semibold tracking-wide text-ink-soft transition-colors hover:border-brass hover:text-ink"
+            className="rounded-sm border border-[var(--line)] px-3 py-1 text-xs font-semibold tracking-wide text-ink-soft transition-colors hover:border-ink hover:text-ink"
             hrefLang={other}
           >
             {other.toUpperCase()}

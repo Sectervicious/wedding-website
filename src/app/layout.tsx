@@ -13,9 +13,9 @@ const fraunces = Fraunces({
 });
 
 export const metadata: Metadata = {
-  title: "Anna & Márton — Wedding",
-  description: "Wedding info and RSVP — Hungarian & English",
-};
+  title: "Berni & Patrik — Wedding",
+  description: "Wedding info and RSVP — Hungarian & English · Hotel Gottwald, Tata",
+}
 
 export default function RootLayout({ children }: LayoutProps<"/">) {
   return (

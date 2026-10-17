@@ -19,7 +19,7 @@ export function FAQ({ dict }: Props) {
                 <span className="flex items-start justify-between gap-4">
                   {item.q}
                   <span
-                    className="mt-0.5 text-brass transition-transform group-open:rotate-45"
+                    className="mt-0.5 text-muted transition-transform group-open:rotate-45"
                     aria-hidden
                   >
                     +
