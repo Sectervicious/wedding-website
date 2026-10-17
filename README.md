@@ -1,8 +1,8 @@
-# Wedding website (Anna & Márton)
+# Wedding website (Berni & Patrik)
 
-Bilingual (Hungarian + English) Next.js wedding site with schedule, venues, travel, dress code, FAQ, contact, and RSVP/survey. Built for **free hosting on Vercel Hobby**.
+Bilingual (Hungarian + English) Next.js wedding site — **29 May 2027**, Hotel Gottwald, Tata. Sections: schedule, venues, travel/stay, dress code, FAQ, contact, RSVP. Built for **free hosting on Vercel Hobby**.
 
-Placeholder names/date/venues — edit copy in `src/lib/i18n/dictionaries.ts`.
+Edit copy in `src/lib/i18n/dictionaries.ts`. Hotel photos live in `public/hotel/` (sourced from [gottwald.hu](https://gottwald.hu/) public materials; credited on the site).
 
 ## Local development
 
@@ -35,17 +35,20 @@ The form posts to `POST /api/rsvp`. Without env vars, the UI shows a friendly �
 
 Configure **one** of the following.
 
-### Option A — Formspree (simplest)
+### Option A — Formspree (simplest) — **recommended**
 
-1. Create a free form at [formspree.io](https://formspree.io).
-2. Copy the form id from the endpoint `https://formspree.io/f/xxxxxx`.
-3. Set:
+What we need from you (one string):
+
+1. Sign up free at [formspree.io](https://formspree.io) (use a Gmail you check).
+2. Create a new form → Formspree shows an endpoint like `https://formspree.io/f/xpwxyzab`.
+3. Send us / paste only the id part: `xpwxyzab` (everything after `/f/`).
+4. We set `FORMSPREE_FORM_ID=xpwxyzab` in Vercel (or `.env.local` for local).
 
 ```bash
 FORMSPREE_FORM_ID=xxxxxx
 ```
 
-Submissions appear in the Formspree inbox (and optional email notifications).
+Submissions land in the Formspree inbox and can email you. Free tier is enough for a wedding RSVP volume.
 
 ### Option B — Supabase (free tier)
 

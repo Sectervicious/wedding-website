@@ -1,3 +1,4 @@
+import Image from "next/image";
 import type { Dictionary } from "@/lib/i18n/dictionaries";
 
 type Props = {
@@ -8,28 +9,19 @@ export function Hero({ dict }: Props) {
   return (
     <section
       id="top"
-      className="hero-plane relative flex min-h-[100svh] w-full items-end overflow-hidden text-white"
+      className="relative flex min-h-[100svh] w-full items-end overflow-hidden text-white"
       aria-label={dict.brand.names}
     >
-      <div
-        className="hero-drift pointer-events-none absolute inset-0"
-        aria-hidden
-      >
-        <div className="leaf-glow absolute -left-[12%] top-[12%] h-[50vmax] w-[50vmax] rounded-full bg-[radial-gradient(circle,rgba(255,255,255,0.07),transparent_65%)]" />
-        <div className="absolute -right-[10%] bottom-[-8%] h-[45vmax] w-[45vmax] rounded-full bg-[radial-gradient(circle,rgba(255,255,255,0.05),transparent_60%)]" />
-        <div className="absolute inset-0 bg-[linear-gradient(to_top,rgba(0,0,0,0.65)_0%,transparent_48%)]" />
-        <svg
-          className="absolute bottom-0 left-0 h-[36%] w-full opacity-40"
-          viewBox="0 0 1440 320"
-          preserveAspectRatio="none"
-          aria-hidden
-        >
-          <path
-            fill="currentColor"
-            className="text-black"
-            d="M0,224 C180,280 320,120 520,160 C720,200 820,300 1020,260 C1180,228 1320,140 1440,180 L1440,320 L0,320 Z"
-          />
-        </svg>
+      <div className="hero-drift absolute inset-0" aria-hidden>
+        <Image
+          src="/hotel/hotel-hero.webp"
+          alt=""
+          fill
+          priority
+          sizes="100vw"
+          className="object-cover object-center grayscale"
+        />
+        <div className="absolute inset-0 bg-[linear-gradient(to_top,rgba(0,0,0,0.82)_0%,rgba(0,0,0,0.35)_45%,rgba(0,0,0,0.5)_100%)]" />
       </div>
 
       <div className="relative z-10 mx-auto w-full max-w-6xl px-4 pb-16 pt-28 sm:px-6 sm:pb-20">

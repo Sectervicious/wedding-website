@@ -1,8 +1,24 @@
+import Image from "next/image";
 import type { Dictionary } from "@/lib/i18n/dictionaries";
 
 type Props = { dict: Dictionary };
 
 export function Travel({ dict }: Props) {
+  const roomPhotos = [
+    {
+      src: "/hotel/room-double.webp",
+      alt: dict.travel.stay.rooms[0].name,
+    },
+    {
+      src: "/hotel/room-standard.webp",
+      alt: dict.travel.stay.rooms[0].name,
+    },
+    {
+      src: "/hotel/room-junior.webp",
+      alt: dict.travel.stay.rooms[1].name,
+    },
+  ];
+
   return (
     <section id="travel" className="site-section bg-mist">
       <div className="mx-auto max-w-6xl px-4 sm:px-6">
@@ -27,6 +43,23 @@ export function Travel({ dict }: Props) {
           </h3>
           <p className="mt-3 max-w-2xl text-ink-soft">{dict.travel.stay.lead}</p>
 
+          <div className="mt-8 grid gap-3 sm:grid-cols-3">
+            {roomPhotos.map((photo) => (
+              <div
+                key={photo.src}
+                className="relative aspect-[4/3] overflow-hidden"
+              >
+                <Image
+                  src={photo.src}
+                  alt={photo.alt}
+                  fill
+                  sizes="(max-width: 640px) 100vw, 360px"
+                  className="object-cover grayscale"
+                />
+              </div>
+            ))}
+          </div>
+
           <ul className="mt-8 divide-y divide-[var(--line)] border-y border-[var(--line)]">
             {dict.travel.stay.rooms.map((room) => (
               <li
@@ -49,6 +82,7 @@ export function Travel({ dict }: Props) {
           >
             {dict.travel.stay.bookLabel}
           </a>
+          <p className="mt-6 text-xs text-muted">{dict.venues.photoCredit}</p>
         </div>
       </div>
     </section>

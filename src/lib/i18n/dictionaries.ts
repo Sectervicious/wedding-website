@@ -62,6 +62,9 @@ const hu = {
     hotelNote: "4★ superior szálloda · 2890 Tata, Fekete u. 1.",
     hotelLinkLabel: "Hotel weboldala & fotók",
     hotelUrl: HOTEL_SITE,
+    galleryAlt: "Hotel Gottwald — vintage terasz a parkban",
+    photoCredit:
+      "Fotók: Hotel Gottwald (gottwald.hu) — a hotel nyilvános anyagából.",
     ceremony: {
       label: "Szertartás",
       name: "Az öreg tölgyfa alatt",
@@ -268,6 +271,9 @@ const en: Dictionary = {
     hotelNote: "4★ superior hotel · 2890 Tata, Fekete u. 1.",
     hotelLinkLabel: "Hotel website & photos",
     hotelUrl: HOTEL_SITE,
+    galleryAlt: "Hotel Gottwald — vintage terrace in the park",
+    photoCredit:
+      "Photos: Hotel Gottwald (gottwald.hu) — from the hotel’s public materials.",
     ceremony: {
       label: "Ceremony",
       name: "Under the old oak",
