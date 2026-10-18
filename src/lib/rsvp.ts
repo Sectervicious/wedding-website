@@ -1,11 +1,15 @@
+export type RsvpGuest = {
+  name: string;
+  allergy: "yes" | "no";
+  allergyDetail?: string;
+};
+
 export type RsvpPayload = {
   name: string;
   email: string;
-  attending: "yes" | "no";
-  plusOne: "yes" | "no";
-  plusOneName?: string;
-  diet?: string;
-  message?: string;
+  partySize: number;
+  guests: RsvpGuest[];
+  accommodation: "yes" | "no";
   locale?: string;
 };
 
@@ -13,16 +17,44 @@ export type RsvpResult =
   | { ok: true; provider: "formspree" | "supabase" }
   | { ok: false; reason: "unconfigured" | "provider_error" | "invalid"; detail?: string };
 
+const MAX_PARTY = 10;
+
 function validate(payload: RsvpPayload): string | null {
   if (!payload.name?.trim()) return "name required";
   if (!payload.email?.trim() || !payload.email.includes("@")) return "email required";
-  if (payload.attending !== "yes" && payload.attending !== "no") {
-    return "attendance required";
+  if (
+    !Number.isInteger(payload.partySize) ||
+    payload.partySize < 0 ||
+    payload.partySize > MAX_PARTY
+  ) {
+    return "party size required";
   }
-  if (payload.plusOne !== "yes" && payload.plusOne !== "no") {
-    return "plusOne required";
+  if (!Array.isArray(payload.guests) || payload.guests.length !== payload.partySize) {
+    return "guest list required";
+  }
+  for (const guest of payload.guests) {
+    if (!guest?.name?.trim()) return "guest name required";
+    if (guest.allergy !== "yes" && guest.allergy !== "no") return "allergy required";
+    if (guest.allergy === "yes" && !guest.allergyDetail?.trim()) {
+      return "allergy detail required";
+    }
+  }
+  if (payload.accommodation !== "yes" && payload.accommodation !== "no") {
+    return "accommodation required";
   }
   return null;
+}
+
+function guestSummary(guests: RsvpGuest[]): string {
+  return guests
+    .map((guest, index) => {
+      const allergy =
+        guest.allergy === "yes"
+          ? `allergy: ${guest.allergyDetail?.trim()}`
+          : "no allergy";
+      return `${index + 1}. ${guest.name.trim()} — ${allergy}`;
+    })
+    .join("\n");
 }
 
 export function getRsvpProvider(): "formspree" | "supabase" | null {
@@ -47,13 +79,11 @@ async function submitFormspree(payload: RsvpPayload): Promise<RsvpResult> {
     body: JSON.stringify({
       name: payload.name,
       email: payload.email,
-      attending: payload.attending,
-      plusOne: payload.plusOne,
-      plusOneName: payload.plusOneName ?? "",
-      diet: payload.diet ?? "",
-      message: payload.message ?? "",
+      partySize: payload.partySize,
+      guests: guestSummary(payload.guests),
+      accommodation: payload.accommodation,
       locale: payload.locale ?? "",
-      _subject: `Wedding RSVP — ${payload.name}`,
+      _subject: `Wedding reply — ${payload.name}`,
     }),
   });
 
@@ -80,11 +110,9 @@ async function submitSupabase(payload: RsvpPayload): Promise<RsvpResult> {
     body: JSON.stringify({
       name: payload.name,
       email: payload.email,
-      attending: payload.attending,
-      plus_one: payload.plusOne === "yes",
-      plus_one_name: payload.plusOneName || null,
-      diet: payload.diet || null,
-      message: payload.message || null,
+      party_size: payload.partySize,
+      guests: payload.guests,
+      accommodation: payload.accommodation,
       locale: payload.locale || null,
     }),
   });

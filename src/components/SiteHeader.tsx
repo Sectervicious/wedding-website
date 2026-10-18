@@ -3,6 +3,7 @@
 import Link from "next/link";
 import type { Dictionary } from "@/lib/i18n/dictionaries";
 import type { Locale } from "@/lib/i18n/config";
+import { OpenRsvpButton } from "./RsvpProvider";
 
 type Props = {
   locale: Locale;
@@ -12,11 +13,12 @@ type Props = {
 const links = [
   ["schedule", "schedule"],
   ["venues", "venues"],
+  ["host", "host"],
+  ["dj", "dj"],
   ["travel", "travel"],
   ["dress", "dress"],
   ["faq", "faq"],
   ["contact", "contact"],
-  ["rsvp", "rsvp"],
 ] as const;
 
 export function SiteHeader({ locale, dict }: Props) {
@@ -52,9 +54,9 @@ export function SiteHeader({ locale, dict }: Props) {
           >
             {other.toUpperCase()}
           </Link>
-          <a href="#rsvp" className="btn-primary !px-3.5 !py-2 text-sm">
+          <OpenRsvpButton className="btn-primary !px-3.5 !py-2 text-sm">
             {dict.nav.rsvp}
-          </a>
+          </OpenRsvpButton>
         </div>
       </div>
     </header>

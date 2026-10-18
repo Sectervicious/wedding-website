@@ -4,12 +4,9 @@ type Props = { dict: Dictionary };
 
 export function FAQ({ dict }: Props) {
   return (
-    <section id="faq" className="site-section bg-fog">
+    <section id="faq" className="site-section section-rule bg-mist">
       <div className="mx-auto max-w-3xl px-4 sm:px-6">
-        <p className="section-kicker">{dict.nav.faq}</p>
-        <h2 className="font-display mt-3 text-4xl text-ink sm:text-5xl">
-          {dict.faq.title}
-        </h2>
+        <h2 className="section-title text-ink">{dict.faq.title}</h2>
         <p className="mt-3 text-ink-soft">{dict.faq.lead}</p>
 
         <div className="mt-10 divide-y divide-[var(--line)] border-y border-[var(--line)]">

@@ -1,5 +1,6 @@
 import Image from "next/image";
 import type { Dictionary } from "@/lib/i18n/dictionaries";
+import { OpenRsvpButton } from "./RsvpProvider";
 
 type Props = {
   dict: Dictionary;
@@ -7,38 +8,45 @@ type Props = {
 
 export function Hero({ dict }: Props) {
   return (
-    <section
-      id="top"
-      className="relative flex min-h-[100svh] w-full items-end overflow-hidden text-white"
-      aria-label={dict.brand.names}
-    >
-      <div className="hero-drift absolute inset-0" aria-hidden>
-        <Image
-          src="/hotel/hotel-hero.webp"
-          alt=""
-          fill
-          priority
-          sizes="100vw"
-          className="object-cover object-center grayscale"
-        />
-        <div className="absolute inset-0 bg-[linear-gradient(to_top,rgba(0,0,0,0.82)_0%,rgba(0,0,0,0.35)_45%,rgba(0,0,0,0.5)_100%)]" />
-      </div>
+    <section id="top" className="bg-mist" aria-label={dict.brand.names}>
+      <div className="lg:grid lg:min-h-[100svh] lg:grid-cols-[minmax(0,1fr)_minmax(0,0.92fr)]">
+        <div className="flex items-center px-4 pb-12 pt-28 sm:px-6 sm:pt-32 lg:py-28 lg:pl-[max(1.5rem,calc((100vw-72rem)/2+1.5rem))] lg:pr-16">
+          <div className="max-w-xl">
+            <p className="font-display text-[clamp(1.75rem,4vw,2.75rem)] leading-none tracking-wide text-lilac">
+              {dict.brand.date}
+            </p>
+            <h1 className="font-display mt-6 text-[clamp(3.4rem,8vw,6.5rem)] leading-[0.9] tracking-tight text-ink">
+              {dict.brand.names}
+            </h1>
+            <p className="mt-6 max-w-md text-base leading-relaxed text-ink-soft sm:text-lg">
+              {dict.brand.tagline}
+            </p>
+            <div className="mt-10 flex flex-wrap items-center gap-8">
+              <OpenRsvpButton className="btn-primary">
+                {dict.hero.cta}
+              </OpenRsvpButton>
+              <a
+                href="#schedule"
+                className="border-b border-ink/30 pb-0.5 text-sm text-ink transition-colors hover:border-ink"
+              >
+                {dict.hero.scroll}
+              </a>
+            </div>
+          </div>
+        </div>
 
-      <div className="relative z-10 mx-auto w-full max-w-6xl px-4 pb-16 pt-28 sm:px-6 sm:pb-20">
-        <p className="hero-fade-up section-kicker !text-white/55">{dict.brand.date}</p>
-        <h1 className="hero-fade-up-delay font-display mt-4 max-w-4xl text-[clamp(3.2rem,12vw,7.5rem)] leading-[0.92] tracking-tight">
-          {dict.brand.names}
-        </h1>
-        <p className="hero-fade-up-later mt-5 max-w-md text-base text-white/75 sm:text-lg">
-          {dict.brand.tagline}
-        </p>
-        <div className="hero-fade-up-later mt-10 flex flex-wrap items-center gap-6">
-          <a href="#rsvp" className="btn-primary !bg-white !text-ink hover:!bg-fog">
-            {dict.hero.cta}
-          </a>
-          <a href="#schedule" className="btn-ghost text-sm">
-            {dict.hero.scroll}
-          </a>
+        <div
+          className="relative min-h-[78vh] w-full overflow-hidden bg-fog lg:min-h-full"
+          style={{ position: "relative" }}
+        >
+          <Image
+            src="/couple/flowers.png"
+            alt={dict.hero.portraitAlt}
+            fill
+            priority
+            sizes="(max-width: 1024px) 100vw, 50vw"
+            className="object-cover object-[center_30%]"
+          />
         </div>
       </div>
     </section>

@@ -1,5 +1,5 @@
 import { NextResponse } from "next/server";
-import { getRsvpProvider, submitRsvp, type RsvpPayload } from "@/lib/rsvp";
+import { getRsvpProvider, submitRsvp, type RsvpGuest, type RsvpPayload } from "@/lib/rsvp";
 
 export async function GET() {
   const provider = getRsvpProvider();
@@ -9,22 +9,32 @@ export async function GET() {
   });
 }
 
+function asGuest(value: unknown): RsvpGuest {
+  const guest = (value ?? {}) as Partial<RsvpGuest>;
+  return {
+    name: String(guest.name ?? ""),
+    allergy: guest.allergy === "yes" ? "yes" : guest.allergy === "no" ? "no" : ("" as RsvpGuest["allergy"]),
+    allergyDetail: guest.allergyDetail ? String(guest.allergyDetail) : undefined,
+  };
+}
+
 export async function POST(request: Request) {
-  let body: Partial<RsvpPayload>;
+  let body: Partial<RsvpPayload> & { guests?: unknown };
   try {
     body = await request.json();
   } catch {
     return NextResponse.json({ ok: false, reason: "invalid" }, { status: 400 });
   }
 
+  const partySize = Number(body.partySize);
+  const guests = Array.isArray(body.guests) ? body.guests.map(asGuest) : [];
+
   const result = await submitRsvp({
     name: String(body.name ?? ""),
     email: String(body.email ?? ""),
-    attending: body.attending as RsvpPayload["attending"],
-    plusOne: body.plusOne as RsvpPayload["plusOne"],
-    plusOneName: body.plusOneName ? String(body.plusOneName) : undefined,
-    diet: body.diet ? String(body.diet) : undefined,
-    message: body.message ? String(body.message) : undefined,
+    partySize,
+    guests,
+    accommodation: body.accommodation === "yes" ? "yes" : body.accommodation === "no" ? "no" : ("" as RsvpPayload["accommodation"]),
     locale: body.locale ? String(body.locale) : undefined,
   });
 

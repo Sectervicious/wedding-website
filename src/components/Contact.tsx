@@ -4,10 +4,9 @@ type Props = { dict: Dictionary };
 
 export function Contact({ dict }: Props) {
   return (
-    <section id="contact" className="site-section bg-mist">
+    <section id="contact" className="site-section section-rule bg-mist">
       <div className="mx-auto max-w-6xl px-4 sm:px-6">
-        <p className="section-kicker">{dict.nav.contact}</p>
-        <h2 className="font-display mt-3 text-4xl text-ink sm:text-5xl">
+        <h2 className="section-title text-ink">
           {dict.contact.title}
         </h2>
         <p className="mt-3 max-w-xl text-ink-soft">{dict.contact.lead}</p>

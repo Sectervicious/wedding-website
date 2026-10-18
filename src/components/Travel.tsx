@@ -20,10 +20,9 @@ export function Travel({ dict }: Props) {
   ];
 
   return (
-    <section id="travel" className="site-section bg-mist">
+    <section id="travel" className="site-section section-rule bg-mist">
       <div className="mx-auto max-w-6xl px-4 sm:px-6">
-        <p className="section-kicker">{dict.nav.travel}</p>
-        <h2 className="font-display mt-3 text-4xl text-ink sm:text-5xl">
+        <h2 className="section-title text-ink">
           {dict.travel.title}
         </h2>
         <p className="mt-3 max-w-2xl text-ink-soft">{dict.travel.lead}</p>
@@ -48,13 +47,14 @@ export function Travel({ dict }: Props) {
               <div
                 key={photo.src}
                 className="relative aspect-[4/3] overflow-hidden"
+                style={{ position: "relative" }}
               >
                 <Image
                   src={photo.src}
                   alt={photo.alt}
                   fill
                   sizes="(max-width: 640px) 100vw, 360px"
-                  className="object-cover grayscale"
+                  className="object-cover"
                 />
               </div>
             ))}
@@ -74,15 +74,6 @@ export function Travel({ dict }: Props) {
 
           <p className="mt-6 text-sm text-ink-soft">{dict.travel.stay.includes}</p>
           <p className="mt-2 text-sm text-muted">{dict.travel.stay.taxNote}</p>
-          <a
-            href={dict.travel.stay.bookUrl}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="btn-primary mt-8 inline-flex"
-          >
-            {dict.travel.stay.bookLabel}
-          </a>
-          <p className="mt-6 text-xs text-muted">{dict.venues.photoCredit}</p>
         </div>
       </div>
     </section>

@@ -61,11 +61,9 @@ create table if not exists public.rsvps (
   created_at timestamptz not null default now(),
   name text not null,
   email text not null,
-  attending text not null check (attending in ('yes', 'no')),
-  plus_one boolean not null default false,
-  plus_one_name text,
-  diet text,
-  message text,
+  party_size int not null check (party_size >= 0 and party_size <= 10),
+  guests jsonb not null default '[]',
+  accommodation text not null check (accommodation in ('yes', 'no')),
   locale text
 );
 
