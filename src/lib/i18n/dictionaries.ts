@@ -8,14 +8,15 @@ const HOTEL_WEDDING = "https://gottwald.hu/wedding/";
 
 const hu = {
   meta: {
-    title: "Berni & Patrik — Esküvő",
+    title: "Berni és Patrik esküvője",
     description:
-      "Berni és Patrik esküvője — 2027. május 29., Hotel Gottwald, Tata.",
+      "Berni és Patrik esküvője 2027. május 29-én, a tatai Hotel Gottwaldban.",
   },
   brand: {
     names: "Berni & Patrik",
-    date: "Szombat, 2027. május 29.",
-    tagline: "Tatán, május 29-én várunk. Egy nap, egy hely, veletek együtt.",
+    date: "2027. május 29., szombat",
+    tagline:
+      "Május 29-én Tatán várunk benneteket. Egy nap, egy hely — veletek együtt.",
   },
   nav: {
     schedule: "Program",
@@ -23,22 +24,22 @@ const hu = {
     host: "Ceremóniamester",
     dj: "DJ",
     travel: "Utazás",
-    dress: "Dress code",
-    faq: "GYIK",
+    dress: "Öltözet",
+    faq: "Kérdések",
     contact: "Kapcsolat",
     rsvp: "Visszajelzés",
   },
   hero: {
     cta: "Visszajelzés",
-    scroll: "Görgess tovább",
-    portraitAlt: "Berni és Patrik a virágok mellett",
+    scroll: "Görgess le",
+    portraitAlt: "Berni és Patrik a fehér virágok mellett",
   },
   gallery: {
     kicker: "Rólunk",
     photos: [
       { src: "/couple/sunset.jpg", alt: "Berni és Patrik naplementében" },
       { src: "/couple/bosphorus.jpg", alt: "Berni és Patrik a virágok mellett" },
-      { src: "/couple/ring.jpg", alt: "Berni és Patrik, a gyűrű" },
+      { src: "/couple/ring.jpg", alt: "Berni és Patrik a gyűrűvel" },
       { src: "/couple/lights.jpg", alt: "Berni és Patrik az esti fények alatt" },
       { src: "/couple/lookout.jpg", alt: "Berni és Patrik a kilátónál" },
       { src: "/couple/lake.jpg", alt: "Berni és Patrik a tónál" },
@@ -46,7 +47,7 @@ const hu = {
   },
   schedule: {
     title: "A nap menete",
-    lead: "Így telik a nap.",
+    lead: "Így áll össze a nap.",
     items: [
       {
         time: "16:00",
@@ -61,17 +62,17 @@ const hu = {
       {
         time: "18:00",
         title: "Koccintás és fotók",
-        detail: "Pezsgő, és az első közös képek.",
+        detail: "Pezsgő és az első közös képek.",
       },
       {
         time: "19:00",
         title: "Első fogás és beszédek",
-        detail: "Vacsora, és a szavak, amiket egymásnak szántok.",
+        detail: "Vacsora, és a szavak, amiket egymásnak szántatok.",
       },
       {
         time: "19:30",
         title: "Második fogás",
-        detail: "Folytatódik a vacsora.",
+        detail: "A vacsora folytatódik.",
       },
       {
         time: "21:00",
@@ -81,41 +82,41 @@ const hu = {
       {
         time: "00:00",
         title: "Menyasszonytánc",
-        detail: "A menyasszony tánca.",
+        detail: "Tánc a menyasszonnyal.",
       },
       {
         time: "utána",
         title: "Buli, kifulladásig",
-        detail: "A táncparkett addig marad, amíg ti.",
+        detail: "A táncparkett nyitva marad, amíg ti is bírjátok.",
       },
     ],
   },
   venues: {
     title: "Helyszínek",
-    lead: "Minden egy helyen: Hotel Gottwald, Tata — az Öreg-tó közelében.",
+    lead: "Minden egy helyen történik: a tatai Hotel Gottwaldban, az Öreg-tó közelében.",
     hotelNote: "4★ superior szálloda · 2890 Tata, Fekete u. 1.",
-    hotelLinkLabel: "Hotel weboldala & fotók",
+    hotelLinkLabel: "A hotel honlapja és a fotók",
     hotelUrl: HOTEL_SITE,
-    galleryAlt: "Hotel Gottwald főbejárata",
+    galleryAlt: "A Hotel Gottwald főbejárata",
     mapTitle: "Hotel Gottwald, Tata",
     address: "2890 Tata, Fekete utca 1.",
     photoCredit:
-      "Fotók: Hotel Gottwald (gottwald.hu) — a hotel nyilvános anyagából.",
+      "Fotók: Hotel Gottwald (gottwald.hu), a hotel nyilvános anyagából.",
     ceremony: {
       label: "Szertartás",
       name: "Az öreg tölgyfa alatt",
       address:
-        "A kertben mondjuk ki az igent. Nyitott ég, a tó fénye, egy csendesebb perc, mielőtt a terem átveszi az estét.",
+        "A kertben mondjuk ki az igent. Nyitott ég, a tó fénye, egy csendesebb perc, aztán az este a teremé.",
       mapLabel: "Térkép megnyitása",
       mapUrl: MAP_URL,
-      detailLabel: "Helyszín részletei",
+      detailLabel: "A helyszínről",
       detailUrl: HOTEL_WEDDING,
     },
     reception: {
-      label: "Vacsora + party",
+      label: "Vacsora és buli",
       name: "Bálterem",
       address:
-        "Itt terül a vacsora, itt hangzanak el a beszédek, és ide tér vissza a tánc. A bálterem viszi a partyt, a terasz pedig kiengedi a nyári estét.",
+        "Itt tálaljuk a vacsorát, itt hangzanak el a beszédek, és ide térünk vissza táncolni. A bálterem ad helyet a bulinak, a teraszról pedig beárad a nyári este.",
       mapLabel: "Térkép megnyitása",
       mapUrl: MAP_URL,
       detailLabel: "Hotel Gottwald",
@@ -123,30 +124,30 @@ const hu = {
     },
   },
   travel: {
-    title: "Utazás & szállás",
-    lead: "Parkolás a hotelben, szállás a Gottwaldnál, helyi taxi a Tata környékén alvóknak.",
+    title: "Utazás és szállás",
+    lead: "Parkolás a hotelben, szállás a Gottwaldnál; ha Tata környékén alusztok, helyi taxival segítünk.",
     items: [
       {
         title: "Parkolás",
-        body: "Parkolás a Hotel Gottwald területén megoldható.",
+        body: "A Hotel Gottwald területén van parkoló.",
       },
       {
         title: "Taxi Tatán",
-        body: "Ha nem a hotelben alszol, de Tata környékén szállsz meg, helyi taxival segítünk az odavissza úton — részletek később / írj nekünk.",
+        body: "Ha nem a hotelben, hanem Tata környékén szálltok meg, helyi taxival segítünk oda-vissza. A részleteket később megírjuk, addig is írjatok nekünk.",
       },
       {
         title: "Megközelítés",
-        body: "Tata történelmi belvárosa, az Öreg-tó partján. GPS: 47.639935, 18.312428.",
+        body: "Tata történelmi belvárosában, az Öreg-tó partján. GPS: 47.639935, 18.312428.",
       },
     ],
     stay: {
       title: "Szállás — Hotel Gottwald",
-      lead: "Ajánlott szobaárak az esküvői ajánlat alapján (változhatnak; foglaláskor egyeztessetek velünk vagy a hotellel).",
+      lead: "Az esküvői ajánlatban szereplő szobaárak, amelyek változhatnak. Foglaláskor egyeztessetek velünk vagy a hotellel.",
       includes:
-        "Az ár tartalmazza: szállás, gazdag büféreggeli, wellness használat 10:00-ig.",
+        "Az ár tartalmazza a szállást, a bőséges büféreggelit és a wellness használatát 10:00-ig.",
       taxNote:
-        "Idegenforgalmi adó (18–70 év): 830 Ft/fő/éj — a szobaár nem tartalmazza.",
-      bookLabel: "Online foglalás a hotelnél",
+        "Idegenforgalmi adó (18 és 70 év között): 830 Ft/fő/éj. A szobaár ezt nem tartalmazza.",
+      bookLabel: "Foglalás a hotel honlapján",
       bookUrl: HOTEL_BOOK,
       rooms: [
         {
@@ -162,33 +163,33 @@ const hu = {
           price: "68.000 Ft / szoba / éj",
         },
         {
-          name: "Extra fő (4. fő felett, apartman)",
+          name: "További vendég (a 4. főn felül, apartman)",
           price: "12.000 Ft / fő / éj",
         },
       ],
     },
   },
   dress: {
-    title: "Dress code",
+    title: "Öltözet",
     lead: "Elegáns.",
-    avoid: "Pirosat és fehéret ne viseljetek.",
+    avoid: "Ne viseljetek pirosat vagy fehéret.",
     photos: [
-      { src: "/dress/lilac.jpg", alt: "Berni és Patrik elegáns estélyiben" },
+      { src: "/dress/lilac.jpg", alt: "Berni és Patrik elegáns estélyi öltözetben" },
       { src: "/dress/cream.jpg", alt: "Berni és Patrik elegáns ruhában a stégen" },
     ],
   },
   host: {
     kicker: "Ceremóniamester",
     title: "Popovics György",
-    body: "Gyuri vezeti az estét. Nem rigmusokban beszél, és nem tolakszik a középpontba: összetartja a menetet, a vendégeket és a váratlan pillanatokat. Ha kérdésed van a programról, keresd meg nyugodtan — egész nap ott lesz.",
+    body: "Gyuri vezeti az estét. Nem mond rigmusokat, és nem tolja magát előtérbe. Kézben tartja a menetet, figyel a vendégekre, és a váratlan pillanatokban is helytáll. Ha kérdésetek van a programról, nyugodtan keressétek meg: egész nap ott lesz.",
     photoAlt: "Popovics György, a ceremóniamester",
   },
   dj: {
     kicker: "DJ",
     title: "DJ Ratkay",
-    body: "A party Rátkai Zsolté. Esküvői DJ, aki a retró slágerektől a mai tánczenéig olvassa a termet, és a buli közben is beépíti a kéréseket. Klubokban afro house-t, melodic house-t és technót játszik — nálunk a táncparkett a dolga.",
-    photoAlt: "DJ Ratkay a pultnál",
-    mixLabel: "Egy mix tőle",
+    body: "A buli Rátkai Zsolté. Esküvői DJ, aki a retró slágerektől a mai tánczenéig tudja, mi kell a teremnek, és menet közben is beleszövi a kért számokat. Klubokban afro house-t, melodic house-t és technót játszik; nálunk a táncparkett a feladata.",
+    photoAlt: "DJ Ratkay a keverőpultnál",
+    mixLabel: "Egy mixe",
     mixUrl: "https://soundcloud.com/ratkayofficial/ratkay-the-golden-age",
   },
   faq: {
@@ -197,76 +198,84 @@ const hu = {
     items: [
       {
         q: "Hol lesz az esküvő?",
-        a: "A tatai Hotel Gottwaldban (Fekete u. 1.). A szertartás a park öreg tölgyfája alatt, a vacsora a bálteremben.",
+        a: "A tatai Hotel Gottwaldban, a Fekete utca 1. szám alatt. A szertartás a park öreg tölgyfája alatt lesz, a vacsora a bálteremben.",
       },
       {
         q: "Mikor kell visszajelezni?",
-        a: "Kérjük, töltsd ki a visszajelző űrlapot, amint tudod a válaszodat — a pontos határidőt a meghívón is jelezzük.",
+        a: "Kérjük, amint tudjátok a választ, töltsétek ki a visszajelzést. A pontos határidőt a meghívón is megírjuk.",
       },
       {
-        q: "Más nevében is visszajelezhetek?",
-        a: "Igen. Írd be, hányan jöttök, beléd számítva, és mindenki nevét.",
+        q: "Visszajelezhetünk más nevében is?",
+        a: "Igen. Írjátok be, hányan jöttök, titeket is beleszámítva, és mindenki nevét.",
       },
       {
-        q: "Hol tudok parkolni?",
-        a: "Parkolás a Hotel Gottwald területén megoldható.",
+        q: "Hol lehet parkolni?",
+        a: "A Hotel Gottwald területén van parkoló.",
       },
       {
-        q: "Hol ajánlott megszállni?",
-        a: "A Hotel Gottwaldnál — szobatípusok és árak az Utazás & szállás szekcióban. A hotel wellnessét és büféreggelijét is tartalmazza az ár.",
+        q: "Hol érdemes megszállni?",
+        a: "A Hotel Gottwaldban. A szobatípusokat és az árakat az Utazás és szállás részben találjátok. Az ár a büféreggelit és a wellness használatát is tartalmazza.",
       },
       {
-        q: "Ha nem a hotelben alszom?",
-        a: "Ha Tata környékén szállsz meg, helyi taxival segítünk az odavissza úton. Írj nekünk, és egyeztetünk.",
+        q: "Mi van, ha nem a hotelben alszunk?",
+        a: "Ha Tata környékén szálltok meg, helyi taxival segítünk oda-vissza. Írjatok nekünk, és megbeszéljük.",
       },
       {
-        q: "Mi a dress code?",
-        a: "Elegáns. Pirosat és fehéret kérjük, ne viseljetek.",
+        q: "Milyen az öltözet?",
+        a: "Elegáns. Ne viseljetek pirosat vagy fehéret.",
       },
       {
-        q: "Ételallergia / speciális étrend?",
-        a: "Minden vendégnél külön rákérdezünk a visszajelző űrlapon — a menü egyéni igényekhez igazítható.",
+        q: "Ételallergia vagy speciális étrend?",
+        a: "A visszajelzésben minden vendégnél külön rákérdezünk. Az étlap az egyéni igényekhez igazítható.",
       },
       {
         q: "Kültéri szertartás — mi van, ha esik?",
-        a: "A tölgyfa alatti szertartás a kertben zajlik; rossz idő esetén a hotellel egyeztetett beltéri megoldást követjük. Frissítjük, ha végleges.",
+        a: "A tölgyfa alatti szertartás a kertben lesz. Rossz idő esetén a hotellel egyeztetett beltéri tervet követjük. Amint a végleges terv megvan, frissítjük az oldalt.",
       },
     ],
   },
   contact: {
     title: "Kapcsolat",
-    lead: "Írj nyugodtan bármelyik címre.",
+    lead: "Nyugodtan írjatok bármelyik címre.",
     emailLabel: "E-mail",
     emails: ["patrik.hidvegi94@gmail.com", "bernadett9601@gmail.com"],
     note: "Berni vagy Patrik válaszol.",
   },
   rsvp: {
     title: "Visszajelzés",
-    lead: "Írd meg, hányan jöttök, van-e ételallergia, és kértek-e szállást.",
-    name: "Neved",
-    email: "E-mail",
-    partySize: "Hányan jöttök veled?",
-    partySizeHint: "Beléd számítva. Ha nem tudtok jönni, írj 0-t.",
+    lead: "Írjátok meg, hányan jöttök, van-e ételallergia, és szeretnétek-e szobát.",
+    name: "Név",
+    email: "E-mail-cím",
+    partySize: "Hányan jöttök?",
+    partySizeHint: "Titeket is beleszámítva. Ha nem tudtok jönni, írjatok 0-t.",
     guestLabel: "Vendég",
     guestName: "Név",
     allergy: "Van ételallergiája?",
     allergyYes: "Igen",
     allergyNo: "Nincs",
-    allergyDetail: "Mire figyeljünk?",
-    accommodation: "Szeretnétek szállást a hotelben?",
-    accommodationYes: "Igen",
-    accommodationNo: "Nem",
-    close: "Bezárás",
-    submit: "Küldés",
-    submitting: "Küldés…",
-    success: "Köszönjük! Megkaptuk a visszajelzésedet.",
-    error: "Nem sikerült elküldeni. Próbáld újra, vagy írj e-mailben.",
+    allergyDetail: "Mit kell tudnunk róla?",
+    accommodation: "Szeretnétek szobát a hotelben?",
+    accommodationYes: "Igen, szeretnénk",
+    accommodationNo: "Nem, köszönjük",
+    close: "Bezár",
+    submit: "Elküldöm",
+    submitting: "Küldöm…",
+    success: "Köszönjük szépen! Megkaptuk a visszajelzéseteket.",
+    error:
+      "Nem sikerült elküldeni. Próbáljátok meg újra, vagy írjatok nekünk e-mailben.",
     unconfigured:
-      "Az űrlap még nincs bekötve. Állítsd be a FORMSPREE_FORM_ID vagy a Supabase környezeti változókat (lásd README).",
+      "Az űrlap még nincs bekötve. Be kell állítani a FORMSPREE_FORM_ID vagy a Supabase környezeti változóit (lásd a README-t).",
   },
   footer: {
     made: "Készült szeretettel",
   },
+};
+
+export const huValidation = {
+  required: "Ez a mező még hiányzik.",
+  email: "Ide érvényes e-mail-cím kell.",
+  partySize: "Ide 0 és 10 közötti szám kell.",
+  choice: "Válasszatok egyet.",
 };
 
 export type Dictionary = typeof hu;

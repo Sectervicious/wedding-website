@@ -1,7 +1,7 @@
 "use client";
 
 import { useEffect, useRef, useState, type FormEvent } from "react";
-import type { Dictionary } from "@/lib/i18n/dictionaries";
+import { huValidation, type Dictionary } from "@/lib/i18n/dictionaries";
 import type { Locale } from "@/lib/i18n/config";
 
 type Props = {
@@ -20,6 +20,46 @@ type Guest = {
 };
 
 const MAX_PARTY = 10;
+
+function hungarianValidity(input: HTMLInputElement): string {
+  const validity = input.validity;
+  if (validity.typeMismatch) return huValidation.email;
+  if (validity.rangeUnderflow || validity.rangeOverflow) {
+    return huValidation.partySize;
+  }
+  if (input.type === "radio" || input.type === "checkbox") {
+    return huValidation.choice;
+  }
+  return huValidation.required;
+}
+
+function clearValidity(input: HTMLInputElement) {
+  const form = input.form;
+  if (!form || !input.name) {
+    input.setCustomValidity("");
+    return;
+  }
+  form
+    .querySelectorAll<HTMLInputElement>(`input[name="${CSS.escape(input.name)}"]`)
+    .forEach((field) => field.setCustomValidity(""));
+}
+
+function applyHungarianValidity(form: HTMLFormElement) {
+  form.querySelectorAll<HTMLInputElement>("input").forEach((input) => {
+    input.setCustomValidity("");
+    if (input.disabled || input.type === "hidden" || input.validity.valid) return;
+    input.setCustomValidity(hungarianValidity(input));
+  });
+}
+
+function validationHandlers(locale: Locale) {
+  if (locale !== "hu") return {};
+  return {
+    onInput: (event: FormEvent<HTMLInputElement>) => {
+      clearValidity(event.currentTarget);
+    },
+  };
+}
 
 function blankGuest(): Guest {
   return { name: "", allergy: "", allergyDetail: "" };
@@ -134,7 +174,21 @@ export function RsvpForm({ locale, dict, open, onClose }: Props) {
         </h2>
         <p className="mt-3 text-ink-soft">{dict.rsvp.lead}</p>
 
-        <form onSubmit={onSubmit} className="mt-10 space-y-6">
+        <form
+          onSubmit={onSubmit}
+          className="mt-10 space-y-6"
+          onClickCapture={(event) => {
+            if (locale !== "hu") return;
+            const target = event.target;
+            if (!(target instanceof HTMLElement)) return;
+            if (!target.closest('button[type="submit"]')) return;
+            applyHungarianValidity(event.currentTarget);
+          }}
+          onKeyDownCapture={(event) => {
+            if (locale !== "hu" || event.key !== "Enter") return;
+            applyHungarianValidity(event.currentTarget);
+          }}
+        >
           <label className="block">
             <span className="mb-1.5 block text-sm font-medium text-ink">
               {dict.rsvp.name}
@@ -144,6 +198,7 @@ export function RsvpForm({ locale, dict, open, onClose }: Props) {
               required
               autoComplete="name"
               className="input-field"
+              {...validationHandlers(locale)}
             />
           </label>
 
@@ -157,6 +212,7 @@ export function RsvpForm({ locale, dict, open, onClose }: Props) {
               required
               autoComplete="email"
               className="input-field"
+              {...validationHandlers(locale)}
             />
           </label>
 
@@ -174,6 +230,7 @@ export function RsvpForm({ locale, dict, open, onClose }: Props) {
               value={partySize}
               onChange={(event) => onPartySize(event.target.value)}
               className="input-field max-w-28"
+              {...validationHandlers(locale)}
             />
             <span className="mt-1.5 block text-sm text-muted">
               {dict.rsvp.partySizeHint}
@@ -200,6 +257,7 @@ export function RsvpForm({ locale, dict, open, onClose }: Props) {
                     updateGuest(index, { name: event.target.value })
                   }
                   className="input-field"
+                  {...validationHandlers(locale)}
                 />
               </label>
               <div>
@@ -215,6 +273,7 @@ export function RsvpForm({ locale, dict, open, onClose }: Props) {
                       checked={guest.allergy === "yes"}
                       onChange={() => updateGuest(index, { allergy: "yes" })}
                       required
+                      {...validationHandlers(locale)}
                     />
                     {dict.rsvp.allergyYes}
                   </label>
@@ -230,6 +289,7 @@ export function RsvpForm({ locale, dict, open, onClose }: Props) {
                           allergyDetail: "",
                         })
                       }
+                      {...validationHandlers(locale)}
                     />
                     {dict.rsvp.allergyNo}
                   </label>
@@ -247,6 +307,7 @@ export function RsvpForm({ locale, dict, open, onClose }: Props) {
                       updateGuest(index, { allergyDetail: event.target.value })
                     }
                     className="input-field"
+                    {...validationHandlers(locale)}
                   />
                 </label>
               )}
@@ -267,6 +328,7 @@ export function RsvpForm({ locale, dict, open, onClose }: Props) {
                     checked={accommodation === "yes"}
                     onChange={() => setAccommodation("yes")}
                     required
+                    {...validationHandlers(locale)}
                   />
                   {dict.rsvp.accommodationYes}
                 </label>
@@ -277,6 +339,7 @@ export function RsvpForm({ locale, dict, open, onClose }: Props) {
                     value="no"
                     checked={accommodation === "no"}
                     onChange={() => setAccommodation("no")}
+                    {...validationHandlers(locale)}
                   />
                   {dict.rsvp.accommodationNo}
                 </label>
