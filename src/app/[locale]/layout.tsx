@@ -1,12 +1,27 @@
-import { notFound } from "next/navigation";
-import { isLocale, locales, type Locale } from "@/lib/i18n/config";
+import type { Metadata } from "next";
+import { Cormorant_Garamond, Outfit } from "next/font/google";
+import { defaultLocale, isLocale, locales, type Locale } from "@/lib/i18n/config";
 import { getDictionary } from "@/lib/i18n/dictionaries";
+import "../globals.css";
+
+const outfit = Outfit({
+  variable: "--font-outfit",
+  subsets: ["latin", "latin-ext"],
+});
+
+const cormorant = Cormorant_Garamond({
+  variable: "--font-cormorant",
+  subsets: ["latin", "latin-ext"],
+  weight: ["400", "500", "600"],
+});
 
 export function generateStaticParams() {
   return locales.map((locale) => ({ locale }));
 }
 
-export async function generateMetadata(props: LayoutProps<"/[locale]">) {
+export async function generateMetadata(
+  props: LayoutProps<"/[locale]">,
+): Promise<Metadata> {
   const { locale } = await props.params;
   if (!isLocale(locale)) return {};
   const dict = getDictionary(locale);
@@ -24,11 +39,16 @@ export async function generateMetadata(props: LayoutProps<"/[locale]">) {
 
 export default async function LocaleLayout(props: LayoutProps<"/[locale]">) {
   const { locale } = await props.params;
-  if (!isLocale(locale)) notFound();
+  const lang: Locale = isLocale(locale) ? locale : defaultLocale;
 
   return (
-    <div lang={locale as Locale} className="flex min-h-full flex-1 flex-col">
-      {props.children}
-    </div>
+    <html
+      lang={lang}
+      className={`${outfit.variable} ${cormorant.variable} h-full antialiased`}
+    >
+      <body className="min-h-full flex flex-col">
+        <div className="flex min-h-full flex-1 flex-col">{props.children}</div>
+      </body>
+    </html>
   );
 }

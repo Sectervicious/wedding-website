@@ -1,6 +1,7 @@
 import { notFound } from "next/navigation";
 import { isLocale } from "@/lib/i18n/config";
 import { getDictionary } from "@/lib/i18n/dictionaries";
+import { DocumentLang } from "@/components/DocumentLang";
 import { WeddingPage } from "@/components/WeddingPage";
 
 export default async function LocalePage(props: PageProps<"/[locale]">) {
@@ -8,5 +9,10 @@ export default async function LocalePage(props: PageProps<"/[locale]">) {
   if (!isLocale(locale)) notFound();
 
   const dict = getDictionary(locale);
-  return <WeddingPage locale={locale} dict={dict} />;
+  return (
+    <>
+      <DocumentLang locale={locale} />
+      <WeddingPage locale={locale} dict={dict} />
+    </>
+  );
 }
