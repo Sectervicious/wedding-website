@@ -20,7 +20,7 @@ type Props = {
 export function WeddingPage({ locale, dict }: Props) {
   return (
     <RsvpProvider locale={locale} dict={dict}>
-      <SiteHeader locale={locale} dict={dict} />
+      <SiteHeader key={locale} locale={locale} dict={dict} />
       <main>
         <Hero dict={dict} />
         <CoupleGallery dict={dict} />
