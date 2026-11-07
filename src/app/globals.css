@@ -89,7 +89,7 @@ body {
   font-weight: var(--weight-regular);
   line-height: 1.65;
   text-rendering: optimizeLegibility;
-  overflow-wrap: break-word;
+  overflow-wrap: anywhere;
 }
 
 @media (min-width: 1024px) {

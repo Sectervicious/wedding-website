@@ -25,7 +25,7 @@ export function Host({ dict }: Props) {
   return (
     <article id="host" className="flex items-start gap-4 lg:gap-6">
       <Portrait src="/photos/host-popovics.jpg" width={960} />
-      <div className="min-w-0">
+      <div className="min-w-0 flex-1 basis-[8rem]">
         <p className="text-[0.9375rem] font-medium leading-normal text-[var(--color-off-white)]">
           {dict.host.kicker}
         </p>
@@ -40,7 +40,7 @@ export function Dj({ dict }: Props) {
   return (
     <article id="dj" className="flex items-start gap-4 lg:gap-6">
       <Portrait src="/photos/dj-ratkay.jpg" width={768} />
-      <div className="min-w-0">
+      <div className="min-w-0 flex-1 basis-[8rem]">
         <p className="text-[0.9375rem] font-medium leading-normal text-[var(--color-off-white)]">
           {dict.dj.kicker}
         </p>
