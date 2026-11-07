@@ -8,46 +8,37 @@ type Props = {
 
 export function Hero({ dict }: Props) {
   return (
-    <section id="top" className="bg-mist" aria-label={dict.brand.names}>
-      <div className="lg:grid lg:min-h-[100svh] lg:grid-cols-[minmax(0,1fr)_minmax(0,0.92fr)]">
-        <div className="flex items-center px-4 pb-12 pt-28 sm:px-6 sm:pt-32 lg:py-28 lg:pl-[max(1.5rem,calc((100vw-72rem)/2+1.5rem))] lg:pr-16">
-          <div className="max-w-xl">
-            <p className="font-display text-[clamp(1.75rem,4vw,2.75rem)] leading-none tracking-wide text-lilac">
-              {dict.brand.date}
-            </p>
-            <h1 className="font-display mt-6 text-[clamp(3.4rem,8vw,6.5rem)] leading-[0.9] tracking-tight text-ink">
-              {dict.brand.names}
-            </h1>
-            <p className="mt-6 max-w-md text-base leading-relaxed text-ink-soft sm:text-lg">
-              {dict.brand.tagline}
-            </p>
-            <div className="mt-10 flex flex-wrap items-center gap-8">
-              <OpenRsvpButton className="btn-primary">
-                {dict.hero.cta}
-              </OpenRsvpButton>
-              <a
-                href="#schedule"
-                className="border-b border-ink/30 pb-0.5 text-sm text-ink transition-colors hover:border-ink"
-              >
-                {dict.hero.scroll}
-              </a>
-            </div>
+    <section id="top" className="bg-page" aria-label={dict.brand.names}>
+      <div className="page-wrap grid items-start gap-8 pb-8 pt-24 lg:grid-cols-[minmax(0,55fr)_minmax(0,45fr)] lg:gap-6 lg:pb-16 lg:pt-28">
+        <div className="measure">
+          <p>{dict.brand.tagline}</p>
+          <h1 className="display-title mt-6 text-ink">{dict.brand.names}</h1>
+          <p className="subhead mt-6 text-ink">{dict.hero.dateLine}</p>
+          <p className="support mt-3">{dict.hero.place}</p>
+          <div className="mt-8 flex flex-wrap items-center gap-x-6 gap-y-4">
+            <OpenRsvpButton className="btn-primary control-text">
+              {dict.hero.cta}
+            </OpenRsvpButton>
+            <a href="#schedule" className="control-text text-link">
+              {dict.nav.schedule}
+            </a>
           </div>
         </div>
 
-        <div
-          className="relative min-h-[78vh] w-full overflow-hidden bg-fog lg:min-h-full"
-          style={{ position: "relative" }}
-        >
-          <Image
-            src="/couple/flowers.png"
-            alt={dict.hero.portraitAlt}
-            fill
-            priority
-            sizes="(max-width: 1024px) 100vw, 50vw"
-            className="object-cover object-[center_30%]"
-          />
-        </div>
+        <figure className="mx-auto w-full max-w-[390px] lg:mx-0 lg:max-w-[540px] lg:justify-self-end">
+          <div className="photo-mat">
+            <Image
+              src="/photos/dock-hero-color.jpg"
+              alt=""
+              width={922}
+              height={1153}
+              priority
+              quality={85}
+              sizes="(min-width: 1024px) 520px, (min-width: 430px) 380px, calc(100vw - 52px)"
+              className="aspect-[4/5] h-auto w-full object-cover"
+            />
+          </div>
+        </figure>
       </div>
     </section>
   );

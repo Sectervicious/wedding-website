@@ -4,11 +4,12 @@ import {
   createContext,
   useCallback,
   useContext,
-  useState,
+  useSyncExternalStore,
   type ReactNode,
 } from "react";
 import type { Dictionary } from "@/lib/i18n/dictionaries";
 import type { Locale } from "@/lib/i18n/config";
+import { getDraftSnapshot, getServerDraft, saveDraft, subscribeDraft } from "@/lib/rsvp-draft";
 import { RsvpForm } from "./RsvpForm";
 
 type RsvpContextValue = {
@@ -32,14 +33,18 @@ type Props = {
 };
 
 export function RsvpProvider({ locale, dict, children }: Props) {
-  const [open, setOpen] = useState(false);
-  const openRsvp = useCallback(() => setOpen(true), []);
-  const closeRsvp = useCallback(() => setOpen(false), []);
+  const draft = useSyncExternalStore(subscribeDraft, getDraftSnapshot, getServerDraft);
+  const openRsvp = useCallback(() => {
+    saveDraft({ ...getDraftSnapshot(), open: true });
+  }, []);
+  const closeRsvp = useCallback(() => {
+    saveDraft({ ...getDraftSnapshot(), open: false });
+  }, []);
 
   return (
     <RsvpContext.Provider value={{ openRsvp }}>
       {children}
-      <RsvpForm locale={locale} dict={dict} open={open} onClose={closeRsvp} />
+      <RsvpForm locale={locale} dict={dict} open={draft.open} onClose={closeRsvp} />
     </RsvpContext.Provider>
   );
 }

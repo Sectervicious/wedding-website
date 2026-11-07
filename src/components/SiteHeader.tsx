@@ -1,6 +1,7 @@
 "use client";
 
 import Link from "next/link";
+import { useRouter } from "next/navigation";
 import { useEffect, useId, useRef, useState } from "react";
 import type { Dictionary } from "@/lib/i18n/dictionaries";
 import type { Locale } from "@/lib/i18n/config";
@@ -31,6 +32,7 @@ export function SiteHeader({ locale, dict }: Props) {
   const other: Locale = locale === "hu" ? "en" : "hu";
   const copy = menuCopy[locale];
   const menuId = useId();
+  const router = useRouter();
   const headerRef = useRef<HTMLElement>(null);
   const menuButtonRef = useRef<HTMLButtonElement>(null);
   const [open, setOpen] = useState(false);
@@ -66,34 +68,38 @@ export function SiteHeader({ locale, dict }: Props) {
   }, [open]);
 
   return (
-    <header ref={headerRef} className="nav-blur fixed inset-x-0 top-0 z-50">
-      <div className="mx-auto flex max-w-6xl items-center justify-between gap-4 px-4 py-3 sm:px-6">
+    <header
+      ref={headerRef}
+      className="fixed inset-x-0 top-0 z-50 border-b border-[var(--border-decorative)] bg-page"
+    >
+      <a className="skip-link" href="#content">
+        {dict.nav.skip}
+      </a>
+      <div className="page-wrap flex items-center justify-between gap-3 py-2">
         <a
           href="#top"
-          className="min-w-0 truncate font-display text-lg tracking-tight text-ink sm:text-xl"
+          className="min-w-0 truncate font-display text-xl leading-none text-ink"
         >
           {dict.brand.names}
         </a>
 
-        <nav className="hidden items-center gap-5 text-sm text-ink-soft lg:flex">
+        <nav className="hidden items-center gap-x-4 lg:flex" aria-label={copy.nav}>
           {links.map(([key, id]) => (
             <a
               key={id}
               href={`#${id}`}
-              className="transition-colors hover:text-ink"
+              className="control-text inline-flex min-h-11 items-center text-link"
             >
               {dict.nav[key]}
             </a>
           ))}
         </nav>
 
-        <div className="flex shrink-0 items-center gap-2 sm:gap-3">
+        <div className="flex shrink-0 items-center gap-2">
           <button
             ref={menuButtonRef}
             type="button"
-            className={`inline-flex size-9 items-center justify-center rounded-sm border text-ink transition-colors hover:border-ink lg:hidden ${
-              open ? "border-ink" : "border-[var(--line)]"
-            }`}
+            className="inline-flex size-11 items-center justify-center border border-black text-ink lg:hidden"
             aria-expanded={open}
             aria-controls={menuId}
             aria-label={copy.label}
@@ -103,12 +109,20 @@ export function SiteHeader({ locale, dict }: Props) {
           </button>
           <Link
             href={`/${other}`}
-            className="rounded-sm border border-[var(--line)] px-3 py-1 text-xs font-semibold tracking-wide text-ink-soft transition-colors hover:border-ink hover:text-ink"
             hrefLang={other}
+            lang={other}
+            className="control-text inline-flex min-h-11 min-w-11 items-center justify-center px-2 text-link"
+            aria-label={dict.nav.switchTo}
+            onClick={(event) => {
+              const hash = window.location.hash;
+              if (!hash) return;
+              event.preventDefault();
+              router.push(`/${other}${hash}`);
+            }}
           >
             {other.toUpperCase()}
           </Link>
-          <OpenRsvpButton className="btn-primary !px-3.5 !py-2 text-sm">
+          <OpenRsvpButton className="btn-primary control-text px-3">
             {dict.nav.rsvp}
           </OpenRsvpButton>
         </div>
@@ -118,14 +132,17 @@ export function SiteHeader({ locale, dict }: Props) {
         id={menuId}
         aria-label={copy.nav}
         hidden={!open}
-        className="border-t border-[var(--line)] lg:hidden"
+        className="border-t border-[var(--border-decorative)] lg:hidden"
       >
-        <ul className="mx-auto max-w-6xl px-4 sm:px-6">
+        <ul className="page-wrap">
           {links.map(([key, id]) => (
-            <li key={id} className="border-b border-[var(--line)] last:border-b-0">
+            <li
+              key={id}
+              className="border-b border-[var(--border-decorative)] last:border-b-0"
+            >
               <a
                 href={`#${id}`}
-                className="block py-3 text-sm text-ink-soft transition-colors hover:text-ink"
+                className="control-text flex min-h-11 items-center text-link"
                 onClick={() => setOpen(false)}
               >
                 {dict.nav[key]}
@@ -140,13 +157,7 @@ export function SiteHeader({ locale, dict }: Props) {
 
 function MenuIcon() {
   return (
-    <svg
-      width="18"
-      height="18"
-      viewBox="0 0 18 18"
-      aria-hidden="true"
-      fill="none"
-    >
+    <svg width="18" height="18" viewBox="0 0 18 18" aria-hidden="true" fill="none">
       <path
         d="M3 5h12M3 9h12M3 13h12"
         stroke="currentColor"
@@ -159,13 +170,7 @@ function MenuIcon() {
 
 function CloseIcon() {
   return (
-    <svg
-      width="18"
-      height="18"
-      viewBox="0 0 18 18"
-      aria-hidden="true"
-      fill="none"
-    >
+    <svg width="18" height="18" viewBox="0 0 18 18" aria-hidden="true" fill="none">
       <path
         d="M4.5 4.5l9 9M13.5 4.5l-9 9"
         stroke="currentColor"

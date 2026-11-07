@@ -4,14 +4,14 @@ type Props = { dict: Dictionary };
 
 export function SiteFooter({ dict }: Props) {
   return (
-    <footer className="border-t border-[var(--line)] bg-mist py-10">
-      <div className="mx-auto flex max-w-6xl flex-col items-start justify-between gap-3 px-4 sm:flex-row sm:items-center sm:px-6">
+    <footer className="border-t border-[var(--border-decorative)] bg-page py-10">
+      <div className="page-wrap flex flex-col items-start justify-between gap-4 sm:flex-row sm:items-end">
         <div>
-          <p className="font-display text-xl text-ink">{dict.brand.names}</p>
-          <p className="mt-1 text-xs text-muted">{dict.venues.photoCredit}</p>
+          <p className="font-display text-2xl text-ink">{dict.brand.names}</p>
+          <p className="support mt-2 max-w-md">{dict.venues.photoCredit}</p>
         </div>
-        <p className="text-sm text-ink-soft">
-          {dict.footer.made} · {dict.brand.date}
+        <p className="text-muted">
+          {dict.footer.made} · {dict.hero.dateLine}
         </p>
       </div>
     </footer>
