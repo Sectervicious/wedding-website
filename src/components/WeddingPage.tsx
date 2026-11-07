@@ -1,16 +1,17 @@
 import type { Dictionary } from "@/lib/i18n/dictionaries";
 import type { Locale } from "@/lib/i18n/config";
-import { SiteHeader } from "./SiteHeader";
-import { Hero } from "./Hero";
-import { CoupleGallery } from "./CoupleGallery";
-import { Schedule } from "./Schedule";
-import { Venues } from "./Venues";
-import { Travel } from "./Travel";
 import { DressCode } from "./DressCode";
-import { Dj, Host } from "./People";
 import { FAQ } from "./FAQ";
-import { Contact } from "./Contact";
+import { Hero } from "./Hero";
+import { Dj, Host } from "./People";
+import { PhotoBand } from "./Photo";
+import { RsvpInvite } from "./RsvpInvite";
 import { RsvpProvider } from "./RsvpProvider";
+import { Schedule } from "./Schedule";
+import { SiteHeader } from "./SiteHeader";
+import { Story } from "./Story";
+import { Travel } from "./Travel";
+import { Venues } from "./Venues";
 
 type Props = {
   locale: Locale;
@@ -21,17 +22,39 @@ export function WeddingPage({ locale, dict }: Props) {
   return (
     <RsvpProvider locale={locale} dict={dict}>
       <SiteHeader key={locale} locale={locale} dict={dict} />
-      <main>
+      <main id="content">
         <Hero dict={dict} />
-        <CoupleGallery dict={dict} />
+        <Story dict={dict} />
+        <PhotoBand
+          title={dict.venues.ceremony.name}
+          desktopSrc="/photos/band-oak-desktop.jpg"
+          mobileSrc="/photos/band-oak-mobile.jpg"
+          desktopWidth={2000}
+          desktopHeight={667}
+          mobileWidth={2000}
+          mobileHeight={1333}
+        />
         <Schedule dict={dict} />
         <Venues dict={dict} />
-        <Host dict={dict} />
+        <PhotoBand
+          title={dict.venues.reception.name}
+          desktopSrc="/photos/band-ballroom-desktop.jpg"
+          mobileSrc="/photos/band-ballroom-mobile.jpg"
+          desktopWidth={2000}
+          desktopHeight={667}
+          mobileWidth={2000}
+          mobileHeight={1333}
+        />
         <Travel dict={dict} />
+        <RsvpInvite dict={dict} />
         <DressCode dict={dict} />
-        <Dj dict={dict} />
+        <section className="theme-inverse site-section bg-inverse text-white">
+          <div className="page-wrap grid gap-14 lg:grid-cols-2 lg:gap-10">
+            <Host dict={dict} />
+            <Dj dict={dict} />
+          </div>
+        </section>
         <FAQ dict={dict} />
-        <Contact dict={dict} />
       </main>
     </RsvpProvider>
   );

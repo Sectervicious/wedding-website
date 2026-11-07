@@ -27,11 +27,17 @@ const hu = {
     faq: "GYIK",
     contact: "Kapcsolat",
     rsvp: "Visszajelzés",
+    menu: "Menü",
+    closeMenu: "Bezárás",
+    skip: "Ugrás a tartalomhoz",
+    switchTo: "English",
   },
   hero: {
     cta: "Visszajelzés",
     scroll: "Görgess tovább",
     portraitAlt: "Berni és Patrik a virágok mellett",
+    dateLine: "2027. május 29.",
+    place: "Hotel Gottwald · Tata",
   },
   gallery: {
     kicker: "Rólunk",
@@ -47,6 +53,7 @@ const hu = {
   schedule: {
     title: "A nap menete",
     lead: "Így telik a nap.",
+    nextDay: "május 30.",
     items: [
       {
         time: "16:00",
@@ -98,9 +105,8 @@ const hu = {
     hotelUrl: HOTEL_SITE,
     galleryAlt: "Hotel Gottwald főbejárata",
     mapTitle: "Hotel Gottwald, Tata",
+    mapFrameTitle: "A helyszín térképe",
     address: "2890 Tata, Fekete utca 1.",
-    photoCredit:
-      "Fotók: Hotel Gottwald (gottwald.hu) — a hotel nyilvános anyagából.",
     ceremony: {
       label: "Szertartás",
       name: "Az öreg tölgyfa alatt",
@@ -246,7 +252,7 @@ const hu = {
     name: "Neved",
     email: "E-mail",
     partySize: "Hányan jöttök veled?",
-    partySizeHint: "Beléd számítva. Ha nem tudtok jönni, írj 0-t.",
+    partySizeHint: "Beléd számítva, 1-től 10-ig.",
     guestLabel: "Vendég",
     guestName: "Név",
     allergy: "Van ételallergiája?",
@@ -262,7 +268,26 @@ const hu = {
     success: "Köszönjük! Megkaptuk a visszajelzésedet.",
     error: "Nem sikerült elküldeni. Próbáld újra, vagy írj e-mailben.",
     unconfigured:
-      "Az űrlap még nincs bekötve. Állítsd be a FORMSPREE_FORM_ID vagy a Supabase környezeti változókat (lásd README).",
+      "A visszajelző űrlap még nem elérhető. Írj e-mailben — amit beírtál, megmarad ezen az oldalon.",
+    attendance: "Ott leszel?",
+    attending: "Igen, ott leszek",
+    declining: "Nem tudok ott lenni",
+    accommodationNote: "Ez érdeklődés, nem visszaigazolt foglalás.",
+    allergyReason: "A menü miatt kérdezzük.",
+    privacy:
+      "A nevet, az e-mailt, az allergiát és a szállásérdeklődést csak az esküvő szervezéséhez használjuk. Javításhoz írj a lenti címekre.",
+    requiredNote: "A * jelölt mezők kötelezők.",
+    errorSummary: "Ellenőrizd a jelölt mezőket.",
+    errors: {
+      attendance: "Válaszd ki, hogy ott leszel-e.",
+      name: "Add meg a neved.",
+      email: "Adj meg egy érvényes e-mail-címet.",
+      partySize: "Add meg, hányan jöttök (1–10).",
+      guestName: "Add meg a nevet.",
+      allergy: "Válaszd ki, van-e allergia.",
+      allergyDetail: "Írd le, mire figyeljünk.",
+      accommodation: "Válaszd ki, kértek-e szállást.",
+    },
   },
   footer: {
     made: "Készült szeretettel",
@@ -292,11 +317,17 @@ const en: Dictionary = {
     faq: "FAQ",
     contact: "Contact",
     rsvp: "Reply",
+    menu: "Menu",
+    closeMenu: "Close",
+    skip: "Skip to content",
+    switchTo: "Magyar",
   },
   hero: {
     cta: "Reply",
     scroll: "Scroll",
     portraitAlt: "Berni and Patrik beside the white flowers",
+    dateLine: "29 May 2027",
+    place: "Hotel Gottwald · Tata",
   },
   gallery: {
     kicker: "Us",
@@ -312,6 +343,7 @@ const en: Dictionary = {
   schedule: {
     title: "The day",
     lead: "How the day unfolds.",
+    nextDay: "30 May",
     items: [
       {
         time: "16:00",
@@ -363,9 +395,8 @@ const en: Dictionary = {
     hotelUrl: HOTEL_SITE,
     galleryAlt: "Hotel Gottwald main entrance",
     mapTitle: "Hotel Gottwald, Tata",
+    mapFrameTitle: "Venue map",
     address: "2890 Tata, Fekete utca 1.",
-    photoCredit:
-      "Photos: Hotel Gottwald (gottwald.hu) — from the hotel’s public materials.",
     ceremony: {
       label: "Ceremony",
       name: "Under the old oak",
@@ -511,7 +542,7 @@ const en: Dictionary = {
     name: "Your name",
     email: "Email",
     partySize: "How many people are coming with you?",
-    partySizeHint: "Include yourself. Enter 0 if you can’t come.",
+    partySizeHint: "Including yourself, from 1 to 10.",
     guestLabel: "Person",
     guestName: "Name",
     allergy: "Any food allergy?",
@@ -527,7 +558,26 @@ const en: Dictionary = {
     success: "Thank you! We’ve received your reply.",
     error: "Couldn’t send. Try again, or email us.",
     unconfigured:
-      "The form isn’t wired yet. Set FORMSPREE_FORM_ID or Supabase env vars (see README).",
+      "The reply form isn’t available yet. Email us — what you entered stays on this page.",
+    attendance: "Will you be there?",
+    attending: "Yes, I’ll be there",
+    declining: "I can’t be there",
+    accommodationNote: "This records interest, not a confirmed reservation.",
+    allergyReason: "We ask so the menu can account for it.",
+    privacy:
+      "We use your name, email, allergy notes, and room interest only to plan the wedding. To correct a reply, write to the addresses below.",
+    requiredNote: "Fields marked * are required.",
+    errorSummary: "Check the marked fields.",
+    errors: {
+      attendance: "Choose whether you will be there.",
+      name: "Enter your name.",
+      email: "Enter a valid email address.",
+      partySize: "Enter how many of you are coming (1–10).",
+      guestName: "Enter this person’s name.",
+      allergy: "Choose whether there is an allergy.",
+      allergyDetail: "Describe the allergy.",
+      accommodation: "Choose whether you would like a room.",
+    },
   },
   footer: {
     made: "Made with care",

@@ -88,12 +88,14 @@ If `FORMSPREE_FORM_ID` is set, Formspree is used. Otherwise Supabase is used whe
 
 ### RSVP fields
 
-- Name, email  
-- Attendance (yes / no)  
-- +1 (yes / no) and optional +1 name  
-- Diet / allergies  
-- Optional message  
+- Submitter name and email, on both paths
+- Attendance: coming, or unable to attend
+- If coming: party size 1–10 including the submitter; each guest’s name; allergy yes/no; allergy detail only when yes
+- Hotel room interest yes/no (this is not a confirmed booking)
+- If unable to attend: party size 0, empty guest list, accommodation no
 - Locale (`hu` / `en`)
+
+There is no optional message field. Leave `FORMSPREE_FORM_ID` empty until a form id is ready.
 
 ## Environment variables
 
