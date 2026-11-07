@@ -1,5 +1,5 @@
-import Image from "next/image";
 import type { Dictionary } from "@/lib/i18n/dictionaries";
+import { cappedSrcSet } from "@/lib/capped-image";
 
 type Props = { dict: Dictionary };
 
@@ -8,13 +8,15 @@ const sizes = "(min-width: 1024px) 144px, 96px";
 function Portrait({ src, width }: { src: string; width: number }) {
   return (
     <div className="portrait">
-      <Image
-        src={src}
+      {/* eslint-disable-next-line @next/next/no-img-element */}
+      <img
+        {...cappedSrcSet(src, width)}
         alt=""
         width={width}
         height={width}
-        quality={85}
         sizes={sizes}
+        loading="lazy"
+        decoding="async"
         className="block h-full w-full object-cover"
       />
     </div>

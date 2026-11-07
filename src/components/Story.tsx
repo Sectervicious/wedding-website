@@ -11,7 +11,7 @@ export function Story({ dict }: Props) {
           src="/photos/story-bosphorus.jpg"
           width={768}
           height={1024}
-          sizes="(min-width: 1024px) 360px, calc(100vw - 96px)"
+          sizes="(min-width: 1024px) 360px, (min-width: 396px) 300px, calc(100vw - 96px)"
           className="mx-auto w-full max-w-[300px] lg:col-span-5 lg:max-w-[360px]"
         />
         <div className="measure lg:col-span-6 lg:col-start-7">

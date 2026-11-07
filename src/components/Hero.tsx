@@ -28,7 +28,7 @@ export function Hero({ dict }: Props) {
           width={922}
           height={1152}
           priority
-          sizes="(min-width: 1024px) 500px, calc(100vw - 72px)"
+          sizes="(min-width: 1024px) 500px, (min-width: 414px) 342px, calc(100vw - 72px)"
           className="mx-auto w-full max-w-[342px] lg:mx-0 lg:max-w-[500px] lg:justify-self-end"
         />
       </div>

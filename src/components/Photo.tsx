@@ -1,5 +1,4 @@
-import { getImageProps } from "next/image";
-import Image from "next/image";
+import { cappedSrcSet } from "@/lib/capped-image";
 
 type FrameProps = {
   src: string;
@@ -20,17 +19,22 @@ export function FramedPhoto({
   priority = false,
   className = "",
 }: FrameProps) {
+  const image = cappedSrcSet(src, width);
   return (
     <div className={`photo-frame ${className}`}>
       <div className="photo-mat">
-        <Image
-          src={src}
+        {/* next/image cannot cap srcset to the file's intrinsic width. */}
+        {/* eslint-disable-next-line @next/next/no-img-element */}
+        <img
+          src={image.src}
+          srcSet={image.srcSet}
+          sizes={sizes}
           alt={alt}
           width={width}
           height={height}
-          sizes={sizes}
-          quality={85}
-          priority={priority}
+          loading={priority ? "eager" : "lazy"}
+          fetchPriority={priority ? "high" : undefined}
+          decoding="async"
           className="h-auto w-full"
         />
       </div>
@@ -57,37 +61,25 @@ export function PhotoBand({
   desktopSrc,
   mobileSrc,
   desktopWidth,
-  desktopHeight,
   mobileWidth,
   mobileHeight,
 }: BandProps) {
-  const shared = { alt: "", sizes: "100vw", quality: 85 as const };
-  const {
-    props: { srcSet: desktop },
-  } = getImageProps({
-    ...shared,
-    src: desktopSrc,
-    width: desktopWidth,
-    height: desktopHeight,
-  });
-  const {
-    props: { srcSet: mobile, ...rest },
-  } = getImageProps({
-    ...shared,
-    src: mobileSrc,
-    width: mobileWidth,
-    height: mobileHeight,
-  });
-
+  const desktop = cappedSrcSet(desktopSrc, desktopWidth);
+  const mobile = cappedSrcSet(mobileSrc, mobileWidth);
   return (
     <section className="photo-band" aria-label={title}>
       <picture>
-        <source media="(min-width: 768px)" srcSet={desktop} />
+        <source media="(min-width: 768px)" srcSet={desktop.srcSet} sizes="100vw" />
         <img
-          {...rest}
+          src={mobile.src}
+          srcSet={mobile.srcSet}
+          sizes="100vw"
           alt=""
-          srcSet={mobile}
-          style={{ ...rest.style, width: "100%", height: "100%", objectFit: "cover" }}
+          width={mobileWidth}
+          height={mobileHeight}
+          loading="lazy"
+          decoding="async"
+          style={{ width: "100%", height: "100%", objectFit: "cover" }}
         />
       </picture>
       <h2 className="photo-band-title">{title}</h2>
