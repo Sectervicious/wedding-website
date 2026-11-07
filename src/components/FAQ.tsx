@@ -1,4 +1,6 @@
 import type { Dictionary } from "@/lib/i18n/dictionaries";
+import { ContactEmails } from "./Contact";
+import { Ornament } from "./Photo";
 
 type Props = { dict: Dictionary };
 
@@ -37,6 +39,15 @@ export function FAQ({ dict }: Props) {
             </details>
           ))}
         </div>
+
+        <div id="contact" className="mt-12 max-w-3xl">
+          <h3 className="subhead text-ink">{dict.contact.title}</h3>
+          <p className="measure mt-3">{dict.contact.lead}</p>
+          <p className="support mt-6">{dict.contact.emailLabel}</p>
+          <ContactEmails dict={dict} className="mt-3 space-y-2" />
+          <p className="support mt-4">{dict.contact.note}</p>
+        </div>
+        <Ornament className="mx-auto mt-14" />
       </div>
     </section>
   );

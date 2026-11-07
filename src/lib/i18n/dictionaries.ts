@@ -105,9 +105,8 @@ const hu = {
     hotelUrl: HOTEL_SITE,
     galleryAlt: "Hotel Gottwald főbejárata",
     mapTitle: "Hotel Gottwald, Tata",
+    mapFrameTitle: "A helyszín térképe",
     address: "2890 Tata, Fekete utca 1.",
-    photoCredit:
-      "Fotók: Hotel Gottwald (gottwald.hu) — a hotel nyilvános anyagából.",
     ceremony: {
       label: "Szertartás",
       name: "Az öreg tölgyfa alatt",
@@ -396,9 +395,8 @@ const en: Dictionary = {
     hotelUrl: HOTEL_SITE,
     galleryAlt: "Hotel Gottwald main entrance",
     mapTitle: "Hotel Gottwald, Tata",
+    mapFrameTitle: "Venue map",
     address: "2890 Tata, Fekete utca 1.",
-    photoCredit:
-      "Photos: Hotel Gottwald (gottwald.hu) — from the hotel’s public materials.",
     ceremony: {
       label: "Ceremony",
       name: "Under the old oak",

@@ -70,17 +70,15 @@ export function SiteHeader({ locale, dict }: Props) {
   return (
     <header
       ref={headerRef}
-      className="fixed inset-x-0 top-0 z-50 border-b border-[var(--border-decorative)] bg-page"
+      className="sticky top-0 z-50 border-b border-[var(--border-decorative)] surface-paper"
     >
       <a className="skip-link" href="#content">
         {dict.nav.skip}
       </a>
       <div className="page-wrap flex items-center justify-between gap-3 py-2">
-        <a
-          href="#top"
-          className="min-w-0 truncate font-display text-xl leading-none text-ink"
-        >
-          {dict.brand.names}
+        <a href="#top" className="inline-flex shrink-0" aria-label={dict.brand.names}>
+          {/* eslint-disable-next-line @next/next/no-img-element */}
+          <img src="/design/bp-monogram.svg" alt="" className="monogram" />
         </a>
 
         <nav className="hidden items-center gap-x-4 lg:flex" aria-label={copy.nav}>
