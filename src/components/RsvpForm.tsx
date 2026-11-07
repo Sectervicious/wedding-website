@@ -36,7 +36,9 @@ function fieldDomId(key: string) {
 export function RsvpForm({ locale, dict, open, onClose }: Props) {
   const dialogRef = useRef<HTMLDialogElement>(null);
   const summaryRef = useRef<HTMLDivElement>(null);
+  const attendanceRef = useRef<HTMLFieldSetElement>(null);
   const sending = useRef(false);
+  const suppressAttendance = useRef(false);
   const formId = useId();
   const [status, setStatus] = useState<Status>("idle");
   const draft = useSyncExternalStore(subscribeDraft, getDraftSnapshot, getServerDraft);
@@ -50,7 +52,21 @@ export function RsvpForm({ locale, dict, open, onClose }: Props) {
   useEffect(() => {
     const dialog = dialogRef.current;
     if (!dialog) return;
-    if (open && !dialog.open) dialog.showModal();
+    if (open && !dialog.open) {
+      suppressAttendance.current = true;
+      dialog.showModal();
+      const snapshot = getDraftSnapshot();
+      if (!snapshot.attendancePicked) {
+        dialog.querySelectorAll<HTMLInputElement>('input[name="attendance"]').forEach((input) => {
+          input.checked = false;
+        });
+        if (snapshot.attendance !== "") {
+          saveDraft({ ...snapshot, attendance: "", attendancePicked: false });
+        }
+      }
+      suppressAttendance.current = false;
+      attendanceRef.current?.focus();
+    }
     if (!open && dialog.open) dialog.close();
   }, [open]);
 
@@ -147,7 +163,7 @@ export function RsvpForm({ locale, dict, open, onClose }: Props) {
   }
 
   const orderedErrors = errorOrder(errors, draft.partySize);
-  const attending = draft.attendance === "yes";
+  const attending = draft.attendancePicked && draft.attendance === "yes";
   const copy = dict.rsvp;
 
   function summaryLabel(key: string) {
@@ -190,7 +206,13 @@ export function RsvpForm({ locale, dict, open, onClose }: Props) {
             <ContactEmails dict={dict} className="mt-6 space-y-2" />
           </div>
         ) : (
-          <form id={formId} onSubmit={onSubmit} noValidate aria-busy={status === "submitting"}>
+          <form
+            id={formId}
+            onSubmit={onSubmit}
+            noValidate
+            autoComplete="off"
+            aria-busy={status === "submitting"}
+          >
             <p>{copy.lead}</p>
             <p className="support mt-3">{copy.requiredNote}</p>
 
@@ -225,6 +247,8 @@ export function RsvpForm({ locale, dict, open, onClose }: Props) {
             )}
 
             <fieldset
+              ref={attendanceRef}
+              tabIndex={-1}
               className="mt-8"
               aria-invalid={errors.attendance ? true : undefined}
               aria-describedby={errors.attendance ? "rsvp-attendance-error" : undefined}
@@ -240,8 +264,12 @@ export function RsvpForm({ locale, dict, open, onClose }: Props) {
                     type="radio"
                     name="attendance"
                     value="yes"
-                    checked={draft.attendance === "yes"}
-                    onChange={() => patch({ attendance: "yes" }, ["attendance"])}
+                    checked={draft.attendancePicked && draft.attendance === "yes"}
+                    autoComplete="off"
+                    onChange={() => {
+                      if (suppressAttendance.current) return;
+                      patch({ attendance: "yes", attendancePicked: true }, ["attendance"]);
+                    }}
                   />
                   {copy.attending}
                 </label>
@@ -250,8 +278,12 @@ export function RsvpForm({ locale, dict, open, onClose }: Props) {
                     type="radio"
                     name="attendance"
                     value="no"
-                    checked={draft.attendance === "no"}
-                    onChange={() => patch({ attendance: "no" }, ["attendance"])}
+                    checked={draft.attendancePicked && draft.attendance === "no"}
+                    autoComplete="off"
+                    onChange={() => {
+                      if (suppressAttendance.current) return;
+                      patch({ attendance: "no", attendancePicked: true }, ["attendance"]);
+                    }}
                   />
                   {copy.declining}
                 </label>

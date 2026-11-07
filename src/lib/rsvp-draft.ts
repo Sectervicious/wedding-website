@@ -16,6 +16,8 @@ export type GuestDraft = {
 export type RsvpDraft = {
   open: boolean;
   attendance: Attendance;
+  /** True only after the guest chooses yes or no. Restored drafts ignore a bare value. */
+  attendancePicked: boolean;
   name: string;
   email: string;
   partySize: number;
@@ -33,6 +35,7 @@ export function emptyDraft(): RsvpDraft {
   return {
     open: false,
     attendance: "",
+    attendancePicked: false,
     name: "",
     email: "",
     partySize: 1,
@@ -58,9 +61,14 @@ export function sanitizeDraft(value: unknown): RsvpDraft {
   const guests = Array.isArray(raw.guests) ? raw.guests.slice(0, MAX_PARTY) : [];
   while (guests.length < safeSize) guests.push(blankGuest());
 
+  const attendance = asAttendance(raw.attendance);
+  const attendancePicked =
+    raw.attendancePicked === true &&
+    (attendance === "yes" || attendance === "no");
   return {
     open: Boolean(raw.open),
-    attendance: asAttendance(raw.attendance),
+    attendance: attendancePicked ? attendance : "",
+    attendancePicked,
     name: typeof raw.name === "string" ? raw.name : "",
     email: typeof raw.email === "string" ? raw.email : "",
     partySize: safeSize,
@@ -80,6 +88,7 @@ export function sanitizeDraft(value: unknown): RsvpDraft {
 const SERVER_DRAFT: RsvpDraft = {
   open: false,
   attendance: "",
+  attendancePicked: false,
   name: "",
   email: "",
   partySize: 1,
@@ -140,6 +149,7 @@ export function clearDraft() {
   memory = {
     ...SERVER_DRAFT,
     guests: [{ name: "", allergy: "", allergyDetail: "" }],
+    attendancePicked: false,
   };
   emitDraft();
 }
